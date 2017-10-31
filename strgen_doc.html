@@ -5,7 +5,7 @@
 
 <title>Strgen Documentation</title>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="strgen.css">
+<link rel="stylesheet" type="text/css" href="css/strgen.css">
 
 <script>
     $(document).ready(function(){
@@ -34,7 +34,7 @@
 
 <body>
     <div class="backlayer"> </div>
-    <img src="bg/regexgen-logo.jpeg" alt="Strgen">
+    <h1 class="title"> Str<span class="highlight">gen</span> </h1>
     <h3 style="margin-top: 0px;margin-bottom: 3px;">Documentation</h3>
     <p style="margin-top: 0px;"><a href="strgen.html">Back to Strgen UI</a></p>
 
@@ -120,6 +120,12 @@
                 <p><i>[1-9]{3}[a-z]{10}</i></p><br>
 
                 <p>This would generate 3 values between 1 and 9, and 10 characters between a and z.</p>
+
+                <p>You can also use a range of quantifiers, for example:</p><br>
+
+                <p><i>[a-z]{4:8} or [a-z]{4-8} or [a-z]{4,8}</i></p><br>
+
+                <p>This will generate a string containing characters a to z with a length of between 4 and 8 characters (inclusive). A colon, dash or comma can be used as shown above.</p>
             </div>
         </div>
 
@@ -139,17 +145,6 @@
                 </ul><br>
 
                 <p>Sequences do not use quantifiers to generate values.</p>
-            </div>
-        </div>
-
-        <div class="content">
-            <div class="accordion_icon"></div>
-            <h4>Additional controls</h4> <br>
-
-            <div class="content_body">
-                <p><b>Allow Duplicate Characters</b><br>This allows the same character to be used in the string. When disabled, the character is added to the resulting string, and then removed from the list used to store and select values valid for the current part of the template. </p> <br>
-
-                <p>As a result of the character removal, if the quantifier is greater than the max number of characters the script can randomly select from, then the quantifier is reduced to equal the maximum, to avoid problems when generating strings with this option disabled.</p>
             </div>
         </div>
 

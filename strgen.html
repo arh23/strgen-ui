@@ -7,28 +7,41 @@
 
 <script src="node_modules/strgen-js/strgen.js"></script>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="strgen.css">
+<link rel="stylesheet" type="text/css" href="css/strgen.css">
 
 <script>
     $(document).ready(function(){
         $("div.history_header").click(function(){
             if($("div.history_list").css("display") == "none"){
-                //$("div.accordion_icon").text("-");
+                $(this).animate({width:'60vw',},50);
+                $(this).animate({height:'63.56px'},50);
+                $(this).animate({marginTop:'0px'},25);
+                $(this).css({fontWeight:'bold'});
+                $(this).css({fontSize:'16px'});
+                $(this).css({border:'none'});
+                $(this).css({borderBottom:'thin solid #000000'});
+                $(this).text("Logs");
                 $("div.history_list").slideToggle('fast');
             }
             else
             {
-                //$("div.accordion_icon").text("+");
                 $("div.history_list").slideUp('fast');
+                $(this).animate({marginTop:'20px'},50);
+                $(this).animate({height:'29px'},50);
+                $(this).animate({width:'100px'},50);
+                $(this).css({border:'thin solid #000000'});
+                $(this).css({fontWeight:''});
+                $(this).css({fontSize:'13.3333px'});
+                $(this).text("View Logs");
             }
         });
 
-        // $("div.gen_button").click(function(){
-        //  initialize_generator();
-        // });
-        //
         $("form[name='regex_form']").on('submit', initialize_generator);
 
+        $('.doc_button').click(function() {
+            window.location = 'strgen_doc.html';
+        });
+        
         $("#enablelogging").change(function(){
             if ($(this).is(":checked"))
             {
@@ -53,26 +66,20 @@
         var enable_logging = document.getElementById('enablelogging').checked;
         var reporting_type = document.getElementById('reportingdropdown').value;
 
-        //if (pattern != "") {
-            var generator = new Strgen();
+        var generator = new Strgen();
             
-            generator.pattern = pattern;
-            generator.allow_duplicate_characters = allow_duplicate_characters;
-            generator.allow_logging = enable_logging;
-            generator.reporting_type = reporting_type;
-            generator.error_output_id = "error";
+        generator.pattern = pattern;
+        generator.allow_duplicate_characters = allow_duplicate_characters;
+        generator.allow_logging = enable_logging;
+        generator.reporting_type = reporting_type;
+        generator.error_output_id = "error";
 
-            var generated_string = generator.createString();
-            document.getElementById("stringvalue").innerHTML = generated_string;
-            record_value(pattern, generated_string, generator.generator_log);
-        //}
-
+        var generated_string = generator.createString();
+        document.getElementById("stringvalue").innerHTML = generated_string;
+        record_value(pattern, generated_string, generator.generator_log);
     } catch(error) {
-        
-        //document.getElementById('error').innerHTML += "<br />" + error.message;
         console.error(error.message);
         console.error(error.stack);
-        
     }
 
     function record_value(pattern, generated_output, log_array) {
@@ -109,9 +116,6 @@
         divExport.setAttribute("class", "log_export");
         document.getElementById(current_id).appendChild(divExport);
 
-        /*
-        document.getElementById(current_id + "_export").innerHTML = "<a href=\"data:text/plain,\" + document.getElementById(\"current_id + \"_p\").innerHTML download=\"export.txt\"><b>Export</b></a>";
-        */
         var paragraph = document.createElement("p"); // create log content
 
         paragraph.setAttribute("id", current_id + "_p");
@@ -157,73 +161,49 @@
 
 <body>
     <div class="backlayer"> </div>
-    <img src="bg/regexgen-logo.jpeg" alt="Strgen">
+    <h1 class="title"> Str<span class="highlight">gen</span> </h1>
     <h3 style="margin-top: 0px;">Recursive descent parser</h3>
 
-    <section class="main_body">
-        <section class="main_area">
-        <form name="regex_form" action="javascript:void(0);">
-            <!--form to contain the two textboxes and button-->
-            <div class="inputwrap">
-                <p>Template:</p>
-                <input type="text" id="templatebox" value=""><br>
-                <div id="error"></div>
-            </div>
 
-            <div class="inputwrap">
-                <!--<p><input class="gen_button" type="button" onclick="initialize_generator()" value="Generate"></p>-->
-                <br><button type="submit" id="custom_button" class="gen_button">Generate</div><br>
+    <section class="main_area">
+    <form name="regex_form" action="javascript:void(0);">
+        <!--form to contain the two textboxes and button-->
+        <div class="inputwrap">
+            <p>Pattern:</p>
+            <input type="text" id="templatebox" value=""><br>
+            <div id="error"></div>
+        </div>
 
-                <textarea id="stringvalue" rows="3" cols="75" readonly></textarea>
-                
-                <br><input type="checkbox" id="allowduplicates" checked /> 
-                <label for="allowduplicates">Allow Duplicate Characters</label><br>
+        <div class="inputwrap">
+            <!--<p><input class="gen_button" type="button" onclick="initialize_generator()" value="Generate"></p>-->
+            <br><button type="submit" id="custom_button" class="gen_button">Generate</div><br>
 
-                <input type="checkbox" class="enable_logging" id="enablelogging" /> 
-                <label for="enabledlogging">Enable Logging</label><br>
+            <textarea id="stringvalue" rows="3" cols="75" readonly></textarea><br>
+            
+            <br><input type="checkbox" id="allowduplicates" checked /> 
+            <label for="allowduplicates">Allow Duplicate Characters</label><br>
 
-                <label for=reportingdropdown> Reporting type: </label>
-                <select id=reportingdropdown>
-                    <option value="full">Full</option>
-                    <option value="less">Less</option>
-                    <option value="none">None</option>
-                </select> <br>
-            </div>
-        </form>
+            <input type="checkbox" class="enable_logging" id="enablelogging" /> 
+            <label for="enabledlogging">Enable Logging</label><br>
 
-        </section>
+            <label for=reportingdropdown> Reporting type: </label>
+            <select id=reportingdropdown>
+                <option value="full">Full</option>
+                <option value="less">Less</option>
+                <option value="none">None</option>
+            </select> <br>
+        </div>
+    </form>
 
-        <section class = "history">
-            <div class="history_header" id="historyheader"><h4>Log</h4>
-                <div class="accordion_icon"></div>
-            </div>
-            <div class="history_list" id="historylist"></div>
-        </section>
+    </section>
 
-        <section class="doc">
-            <h3>Documentation</h3>
+    <section class = "history">
+        <div class="history_header" id="historyheader">View Logs</div>
+        <div class="history_list" id="historylist"></div>
+    </section>
 
-            <div>
-                <h4>Pre-defined ranges</h4> <br>
-
-                <p>The following will pick a character from a predefined set of characters:</p>
-                <ul >
-                    <li>\w - word characters</li>
-                    <li>\p - punctuation characters</li>
-                    <li>\d - digits</li>
-                    <li>\c - lower case characters</li>
-                    <li>\u - upper case characters</li>
-                    <li>\l - letters</li>
-                    <li>\h - hex digits (lower case letters only)</li>
-                    <li>\H - hex digits (lower and upper case)</li>
-                    <li>\o - octal digits</li><br>
-                </ul>
-
-                <p> Click <a href="strgen_doc.html">here</a> for detailed documentation.</p>
-            </div>
-
-        </section>
-
+    <section class="doc">
+        <br><button id="custom_button" class="doc_button">View Docs</div><br>
     </section>
 
 </body>
