@@ -135,7 +135,7 @@ body {
 
 .history_list .history_record {
     margin: 0 auto;
-    width: 90em;
+    width: 58vw;
 
     font-size: 12px;
     border-bottom: thin dashed;
@@ -201,7 +201,7 @@ body {
     position: fixed;
     z-index: -99;
     min-height: 80%;
-    width: 976px;
+    width: 60vw;
     
     margin: 0 auto; /*center*/
     left: 0;
@@ -245,7 +245,7 @@ body {
 
     text-align: center;
     margin: 0 auto;
-    width: 60em;
+    width: 55vw;
     
     background-color: var(--element-colour);
 }
