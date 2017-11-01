@@ -13,9 +13,9 @@
     $(document).ready(function(){
         $("div.history_header").click(function(){
             if($("div.history_list").css("display") == "none"){
+                $(this).animate({marginTop:'0px'},5);
                 $(this).animate({width:'60vw',},50);
                 $(this).animate({height:'63.56px'},50);
-                $(this).animate({marginTop:'0px'},25);
                 $(this).css({fontWeight:'bold'});
                 $(this).css({fontSize:'16px'});
                 $(this).css({border:'none'});
@@ -26,7 +26,7 @@
             else
             {
                 $("div.history_list").slideUp('fast');
-                $(this).animate({marginTop:'20px'},50);
+                $(this).animate({marginTop:'20px'},5);
                 $(this).animate({height:'29px'},50);
                 $(this).animate({width:'100px'},50);
                 $(this).css({border:'thin solid #000000'});
