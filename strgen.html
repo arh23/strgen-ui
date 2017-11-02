@@ -10,29 +10,32 @@
 <link rel="stylesheet" type="text/css" href="css/strgen.css">
 
 <script>
+    $.fn.extend({
+        qcss: function(css) { // from https://stackoverflow.com/a/35057342
+            return $(this).queue(function(next) {
+                $(this).css(css);
+                next();
+            });
+        },
+        qtext: function(text) {
+            return $(this).queue(function(next) {
+                $(this).text(text);
+                next();
+            });
+        }
+    });
+
     $(document).ready(function(){
         $("div.history_header").click(function(){
-            if($("div.history_list").css("display") == "none"){
-                $(this).animate({marginTop:'0px'},5);
-                $(this).animate({width:'60vw',},50);
-                $(this).animate({height:'63.56px'},50);
-                $(this).css({fontWeight:'bold'});
-                $(this).css({fontSize:'16px'});
-                $(this).css({border:'none'});
-                $(this).css({borderBottom:'thin solid #000000'});
+            if($("div.history_list").css("display") == "none") {
+                $(this).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'63.56px'});
+                $(this).css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'});
                 $(this).text("Logs");
                 $("div.history_list").slideToggle('fast');
-            }
-            else
-            {
-                $("div.history_list").slideUp('fast');
-                $(this).animate({marginTop:'20px'},5);
-                $(this).animate({height:'29px'},50);
-                $(this).animate({width:'100px'},50);
-                $(this).css({border:'thin solid #000000'});
-                $(this).css({fontWeight:''});
-                $(this).css({fontSize:'13.3333px'});
-                $(this).text("View Logs");
+            } else {
+                $("div.history_list").slideUp(100);
+                $(this).delay(125).qcss({height:'29px'}).qcss({width:'100px'}).qcss({marginTop:'20px'});
+                $(this).delay(25).qcss({border:'thin solid #000000'}).qcss({fontWeight:''}).qcss({fontSize:'13.3333px'}).qtext("View Logs");
             }
         });
 
