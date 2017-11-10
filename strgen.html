@@ -10,6 +10,9 @@
 <link rel="stylesheet" type="text/css" href="css/strgen.css">
 
 <script>
+    var bgColour = '#b80000';
+    var linkColour = '#ff0505';
+
     $.fn.extend({
         qcss: function(css) { // from https://stackoverflow.com/a/35057342
             return $(this).queue(function(next) {
@@ -46,10 +49,18 @@
         });
 
         $(document).on("click", ".log_label", function() {
-            if ($(this).parent().find('p.log_content').css('display') == "none") {
-                $(this).parent().find('p.log_content').css('display','block');               
+            var element = "#" + $(this).parent().attr('id');
+            console.log(element);
+            if ($(element).find('p.log_content').css('display') == "none") {
+                $(element).find('p.log_content').css('display','block').css('border-color', bgColour);    
+                $(element).css('background-color', bgColour);
+                $(this).css('color', 'white').css('padding-left','4px');  
+                $(element).find('div.log_export a').css('color', 'white').css('padding-right', '4px');    
             } else {
-                $(this).parent().find('p.log_content').css('display','none');
+                $(element).find('p.log_content').css('display','none');
+                $(element).css('background-color', '');
+                $(this).css('color', 'black').css('padding-left', '0px');
+                $(element).find('div.log_export a').css('color', linkColour).css('padding-right', '0px');
             }
         });
 

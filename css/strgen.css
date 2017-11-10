@@ -136,7 +136,7 @@ body {
 .history_list .history_record {
     margin: 0 auto;
     width: 98.5%;
-
+    display: inline-block;
     font-size: 12px;
     /*border-bottom: thin dashed;*/
 
@@ -147,7 +147,7 @@ body {
     padding-bottom: 4px;
     text-align: left;
     float: left;
-    width: 90%;
+    width: 89%;
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -162,8 +162,8 @@ body {
     padding-top: 4px;
     padding-bottom: 4px;
     text-align: right;
-    float: left;
-    width: 10%;
+    float: right;
+    width: 9%;
     white-space: nowrap;
 }
 
