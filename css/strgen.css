@@ -139,7 +139,7 @@ body {
 
     font-size: 12px;
     /*border-bottom: thin dashed;*/
-    padding-bottom: 4px;
+
 }
 
 .history_record .log_label {
@@ -165,7 +165,6 @@ body {
     float: left;
     width: 10%;
     white-space: nowrap;
-    
 }
 
 .history_record p {
@@ -175,7 +174,8 @@ body {
     text-align: left;
     max-height: 200px;
     max-width: 98%;
-
+    margin: 0px;
+    
     overflow: auto;
     white-space: pre-line;
     font-family: consolas;
