@@ -44,7 +44,15 @@
         $('.doc_button').click(function() {
             window.location = 'strgen_doc.html';
         });
-        
+
+        $(document).on("click", ".log_label", function() {
+            if ($(this).parent().find('p.log_content').css('display') == "none") {
+                $(this).parent().find('p.log_content').css('display','block');               
+            } else {
+                $(this).parent().find('p.log_content').css('display','none');
+            }
+        });
+
         $("#enablelogging").change(function(){
             if ($(this).is(":checked"))
             {
@@ -87,7 +95,7 @@
 
     function record_value(pattern, generated_output, log_array) {
         if (log_array != "") {
-            create_fields(pattern, generated_output, count, pattern, log_array);
+            create_fields(pattern, generated_output, count, pattern + " - " + generated_output, log_array);
             count += 1;
         }
     }
@@ -111,7 +119,7 @@
         divLabel.setAttribute("class", "log_label");
         document.getElementById(current_id).appendChild(divLabel);
 
-        document.getElementById(current_id + "_label").innerHTML = "<b>Log entry " + (current_count + 1) + ":</b> " + "   Pattern: " + log_label;
+        document.getElementById(current_id + "_label").innerHTML = "<b>Log entry " + (current_count + 1) + ":</b> " + log_label;
 
         var divExport = document.createElement("div"); // create export label
 
@@ -122,6 +130,7 @@
         var paragraph = document.createElement("p"); // create log content
 
         paragraph.setAttribute("id", current_id + "_p");
+        paragraph.setAttribute("class", "log_content");
         document.getElementById(current_id).appendChild(paragraph);
 
         var log_string = "";

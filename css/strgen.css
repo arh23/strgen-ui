@@ -135,10 +135,10 @@ body {
 
 .history_list .history_record {
     margin: 0 auto;
-    width: 58vw;
+    width: 98.5%;
 
     font-size: 12px;
-    border-bottom: thin dashed;
+    /*border-bottom: thin dashed;*/
     padding-bottom: 4px;
 }
 
@@ -147,7 +147,15 @@ body {
     padding-bottom: 4px;
     text-align: left;
     float: left;
-    width: 75%
+    width: 90%;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history_record .log_label:hover {
+    font-style: italic;
+    cursor: pointer;
 }
 
 .history_record .log_export {
@@ -155,7 +163,9 @@ body {
     padding-bottom: 4px;
     text-align: right;
     float: left;
-    width: 25%;
+    width: 10%;
+    white-space: nowrap;
+    
 }
 
 .history_record p {
@@ -164,9 +174,12 @@ body {
     background-color: white;
     text-align: left;
     max-height: 200px;
+    max-width: 98%;
+
     overflow: auto;
     white-space: pre-line;
     font-family: consolas;
+    display: none;
 }
 
 .history_list:empty:before {
