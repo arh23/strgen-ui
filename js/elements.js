@@ -43,7 +43,7 @@ $(document).ready(function(){
             $(element).find('p.log_content').css('display','block').css('border-color', bgColour);    
             $(element).css('background-color', bgColour);
             $(this).css('color', 'white').css('padding-left','4px');  
-            $(element).find('div.log_export a').css('color', 'white').css('padding-right', '4px');    
+            $(element).find('div.log_export a').css('color', 'white').css('padding-right', '4px');
         } else {
             $(element).find('p.log_content').css('display','none');
             $(element).css('background-color', '');

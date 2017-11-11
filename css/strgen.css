@@ -129,7 +129,7 @@ body {
     overflow: hidden;
     padding-top: 18px;
     padding-bottom: 18px;
-    max-height: 1250px; 
+    max-height: 34vh;/*300px;/*1250px;*/ 
     overflow: auto;
 }
 
