@@ -40,15 +40,9 @@ $(document).ready(function(){
         var element = "#" + $(this).parent().attr('id');
 
         if ($(element).find('p.log_content').css('display') == "none") {
-            $(element).find('p.log_content').css('display','block').css('border-color', bgColour);    
-            $(element).css('background-color', bgColour);
-            $(this).css('color', 'white').css('padding-left','4px');  
-            $(element).find('div.log_export a').css('color', 'white').css('padding-right', '4px');
+            open_log($(this), element);
         } else {
-            $(element).find('p.log_content').css('display','none');
-            $(element).css('background-color', '');
-            $(this).css('color', 'black').css('padding-left', '0px');
-            $(element).find('div.log_export a').css('color', linkColour).css('padding-right', '0px');
+            close_log($(this), element);
         }
     });
 
@@ -60,4 +54,24 @@ $(document).ready(function(){
             }
         }
     });
+
+    function open_log(parent, element) {
+        close_log(parent, '.history_record'); // close all logs that are currently open
+
+        $(element).find('p.log_content').css('display','block').css('border-color', bgColour);    
+        $(element).css('background-color', bgColour);
+        $(parent).css('color', 'white').css('padding-left','4px');  
+        $(element).find('div.log_export a').css('color', 'white').css('padding-right', '4px');
+    }
+
+    function close_log(parent, element) {
+        $(element).find('p.log_content').css('display','none');
+        $(element).css('background-color', '');
+        $(parent).css('color', 'black').css('padding-left', '0px');
+        $(element).find('div.log_export a').css('color', linkColour).css('padding-right', '0px');
+
+        if ($(element).find('p.log_content').css('display') == 'none') {
+            $(element).find('.log_label').css('color', 'black').css('padding-left', '0px');
+        }       
+    }
 });

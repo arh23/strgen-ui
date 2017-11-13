@@ -127,8 +127,8 @@ body {
     word-wrap: break-word;
     min-height: 20px;
     overflow: hidden;
-    padding-top: 18px;
-    padding-bottom: 18px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     max-height: 34vh;/*300px;/*1250px;*/ 
     overflow: auto;
 }
@@ -151,6 +151,14 @@ body {
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    
+    /*make it so text in the button cannot be selected*/
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Mozilla Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+
+    cursor: default;
+    user-select: none;
 }
 
 .history_record .log_label:hover {
