@@ -102,7 +102,7 @@ body {
     
     border: thin solid #000000;
   
-    display: flex;     
+    display: none;     
     justify-content: center;
     align-items: center;
     
@@ -214,6 +214,40 @@ body {
     background-color: var(--element-colour);
 }
 
+.toolbar {
+    height: 60px;
+    border-bottom: thin solid;
+}
+
+.toolbar-button {
+    width: 60px;
+    height: inherit;
+    border-right: thin solid;
+    
+    display: inline-flex;     
+    justify-content: center;
+    align-items: center;
+    
+    float: left;
+    
+    /*make it so text in the button cannot be selected*/
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Mozilla Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+
+    cursor: pointer;
+    user-select: none;
+}
+
+.toolbar-button:hover {
+    
+}
+
+#docs {
+    float: right;
+    border-right: initial;
+    border-left: thin solid;
+}
 /* ------------------------------------- */
 /* main doc page css */
 /* ------------------------------------- */
@@ -281,7 +315,7 @@ body {
     z-index: 100;
     
     padding-top: 10px;
-  padding-bottom: 10px;
+    padding-bottom: 10px;
     margin-top:11px;
     
     word-wrap: break-word;
@@ -310,13 +344,13 @@ h1, h3, h4 {
 /* general page element css */
 /* ------------------------------------- */
 
-#custom_button:hover, .history_header:hover, .content:hover {
-  background-color: var(--hover-colour);
+#custom_button:hover, .toolbar-button:hover, .content:hover {
+    background-color: var(--hover-colour) !important;
     color: white !important;
 }
 
-#custom_button:active, .history_header:active, .content:active {
-  background-color: var(--active-colour);
+#custom_button:active, .toolbar-button:active, .content:active {
+    background-color: var(--active-colour) !important;
     color: black !important;
 }
 

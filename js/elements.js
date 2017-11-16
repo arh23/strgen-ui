@@ -17,22 +17,28 @@ $.fn.extend({
 });
 
 $(document).ready(function(){
-    $("div.history_header").click(function(){
+    $("#logs").click(function(){
         if($("div.history_list").css("display") == "none") {
-            $(this).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'63.56px'});
-            $(this).css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'});
-            $(this).text("Logs");
+            $(this).css({backgroundColor:bgColour})
+            $(this).css({color:'white'});
+            $("div.history_header").css({display:'flex'})
+            $("div.history_header").css({marginTop:'0px'}).css({width:'60vw'}).css({height:'63.56px'});
+            $("div.history_header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'});
+            $("div.history_header").text("Logs");
             $("div.history_list").slideToggle('fast');
         } else {
+            $(this).css({backgroundColor:'white'})
+            $(this).css({color:'initial'});
             $("div.history_list").slideUp(100);
-            $(this).delay(125).qcss({height:'29px'}).qcss({width:'100px'}).qcss({marginTop:'20px'});
-            $(this).delay(25).qcss({border:'thin solid #000000'}).qcss({fontWeight:''}).qcss({fontSize:'13.3333px'}).qtext("View Logs");
+            $("div.history_header").delay(150).qcss({display:'none'})
+            /*$("div.history_header").delay(125).qcss({height:'0x'}).qcss({width:'0px'}).qcss({marginTop:'0px'});*/
+            /*$("div.history_header").delay(25).qcss({border:'thin solid #000000'}).qcss({fontWeight:''}).qcss({fontSize:'13.3333px'}).qtext("View Logs");*/
         }
     });
 
     $("form[name='regex_form']").on('submit', initialize_generator);
 
-    $('.doc_button').click(function() {
+    $('#docs').click(function() {
         window.location = 'strgen_doc.html';
     });
 
