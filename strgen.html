@@ -19,7 +19,6 @@
     <h1 class="title"> Str<span class="highlight">gen</span> </h1>
     <h3 style="margin-top: 0px;">Recursive descent parser</h3>
 
-
     <section class="main_area">
     <div class="toolbar">
         <div class="toolbar-button" id="logs">View logs</div>
@@ -38,23 +37,27 @@
             <!--<p><input class="gen_button" type="button" onclick="initialize_generator()" value="Generate"></p>-->
             <br><button type="submit" id="custom_button" class="gen_button">Generate</div><br>
 
-            <textarea id="stringvalue" rows="3" cols="75" readonly></textarea><br>
-            
-            <br><input type="checkbox" id="allowduplicates" checked /> 
-            <label for="allowduplicates">Allow Duplicate Characters</label><br>
+            <textarea id="stringvalue" rows="3" cols="75" readonly></textarea>
+        </div>
+    </form>
+    </section>
+
+    <section class="config">
+        <div class="config-header" id="configheader">Configuration</div>
+        <div class="config-container"> 
+            <input type="checkbox" id="allowduplicates" checked /> 
+            <label class="checkbox-label" for="allowduplicates">Allow Duplicate Characters</label><br>
 
             <input type="checkbox" class="enable_logging" id="enablelogging" /> 
-            <label for="enabledlogging">Enable Logging</label><br>
+            <label class="checkbox-label" for="enabledlogging">Enable Logging</label><br>
 
-            <label for=reportingdropdown> Reporting type: </label>
+            <label class="dropdown-label" for=reportingdropdown> Reporting type: </label>
             <select id=reportingdropdown>
                 <option value="full">Full</option>
                 <option value="less">Less</option>
                 <option value="none">None</option>
             </select> <br>
         </div>
-    </form>
-
     </section>
 
     <section class = "history">

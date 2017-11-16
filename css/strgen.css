@@ -38,6 +38,7 @@ body {
     text-align: center;
     font-family: verdana;
     font-size: 16px;
+    overflow: hidden;
 }
 
 .backlayer {
@@ -75,25 +76,25 @@ body {
     color: var(--warning-colour);
     word-wrap: break-word;
     margin: 0 auto;
-    width: 60em;
+    width: 50vw;
 }
 
 .main_area {
     width: 60vw;
     border-top: thin solid #000000;
-    margin-bottom: 16px;
+    padding-bottom: 16px;
     margin-left: auto;
     margin-right: auto;
+    border-bottom: thin solid #000000;
 }
 
-.history {
+.history, .config {
     width: 60vw;
     margin: 0 auto;
-    border-top: thin solid #000000;
     height: auto;
 }
 
-.history .history_header {
+.history .history_header, .config .config-header {
     display: inline-block;
     background-color: var(--element-colour);
     
@@ -120,16 +121,15 @@ body {
     user-select: none;
 }
 
-.history .history_list {
+.history .history_list, .config .config-container {
     border-top: thin dotted #000000 0px;
     border-bottom: thin solid #000000;
     display: none;
     word-wrap: break-word;
-    min-height: 20px;
-    overflow: hidden;
     padding-top: 3px;
     padding-bottom: 3px;
-    max-height: 34vh;/*300px;/*1250px;*/ 
+    
+    max-height: 44vh;/*300px;/*1250px;*/
     overflow: auto;
 }
 
@@ -237,10 +237,6 @@ body {
 
     cursor: pointer;
     user-select: none;
-}
-
-.toolbar-button:hover {
-    
 }
 
 #docs {
