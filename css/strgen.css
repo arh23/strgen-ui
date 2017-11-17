@@ -88,29 +88,29 @@ body {
     border-bottom: thin solid #000000;
 }
 
-.history, .config {
+.history, .config, .ref {
     width: 60vw;
     margin: 0 auto;
     height: auto;
 }
 
-.history .history_header, .config .config-header {
+.history .history_header, .config .config-header, .ref .ref-header {
     display: inline-block;
     background-color: var(--element-colour);
     
     margin-left: auto;
     margin-right: auto;
     
-    border: thin solid #000000;
+    border-bottom: thin solid #000000;
   
     display: none;     
     justify-content: center;
     align-items: center;
     
-    margin-top: 20px;
-    width: 100px;
-    height: 29px;
-    font-size: 13.3333px;
+    width: 60vw;
+    height: 63.56px;
+    font-size: 16px;
+    font-weight: bold;
 
     /*make it so text in the button cannot be selected*/
     -webkit-user-select: none; /* Chrome/Safari/Opera */
@@ -121,7 +121,11 @@ body {
     user-select: none;
 }
 
-.history .history_list, .config .config-container {
+.ref .ref-header {
+    display: flex
+}
+
+.history .history_list, .config .config-container, .ref .ref-container {
     border-top: thin dotted #000000 0px;
     border-bottom: thin solid #000000;
     display: none;
@@ -130,7 +134,23 @@ body {
     padding-bottom: 3px;
     
     max-height: 44vh;/*300px;/*1250px;*/
-    overflow: auto;
+    width: inherit;
+    overflow-x: hidden;
+}
+
+.ref .ref-container {
+    display: block;
+    width: inherit;
+}
+
+.ref .ref-container .ref-content {
+    padding-left: 10px;
+    width: 58vw;
+    float: left;
+    word-wrap: break-word;
+    word-break: break-all;
+    hyphens: auto;
+    text-align: left;
 }
 
 .history_list .history_record {
@@ -139,7 +159,6 @@ body {
     display: inline-block;
     font-size: 12px;
     /*border-bottom: thin dashed;*/
-
 }
 
 .history_record .log_label {
