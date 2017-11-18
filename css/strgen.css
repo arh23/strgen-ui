@@ -307,15 +307,17 @@ body {
 }
 
 .content, .doc .intro  {
-    padding: 8px;
-
+    padding-top: 8px;
+    padding-bottom: 8px;
+    /*
     border-right: thin solid #000000;
     border-left: thin solid #000000;
+    */
     border-bottom: thin solid #000000;
 
     text-align: center;
     margin: 0 auto;
-    width: 55vw;
+    width: 60vw;
     
     background-color: var(--element-colour);
 }
@@ -334,9 +336,10 @@ body {
     margin-top:11px;
     
     word-wrap: break-word;
-    width: 97%;
+    width: 60vw;
     
-    border: thin solid #000000;
+    border-top: thin solid #000000;
+    border-bottom: thin solid #000000;
 }
 
 .content .content_body p {
@@ -354,6 +357,7 @@ h1, h3, h4 {
 .content_body p, .content_body li, .content h4, .history_header h4, .history_record p {
     color: unset;
     letter-spacing: unset;
+    
 }
 /* ------------------------------------- */
 /* general page element css */
