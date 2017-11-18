@@ -148,7 +148,7 @@ body {
     width: 58vw;
     float: left;
     word-wrap: break-word;
-    word-break: break-all;
+    /*word-break: break-all;*/
     hyphens: auto;
     text-align: left;
 }
@@ -371,4 +371,55 @@ h1, h3, h4 {
 
 .content h4, .accordion_icon {
     pointer-events: none;
+}
+
+/*tooltip source: https://www.w3schools.com/css/css_tooltip.asp*/
+
+.tooltip {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  /*background-color: #fdd;
+  border-color: #900;
+  opacity: 0.7;*/
+}
+
+.tooltip .tooltiptext, .tooltip .tooltiptextleft {
+    visibility: hidden;
+    width: 150px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    top: 13px;
+    left: 105%;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip .tooltiptextleft{
+    top: 13px;
+    left: -255%;
+}
+.tooltip:hover .tooltiptext, .tooltip:hover .tooltiptextleft {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext::after, .tooltip .tooltiptextleft::after {
+    content: " ";
+    position: absolute;
+    top: 35%;
+    right: 100%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+.tooltip .tooltiptextleft::after {
+    top: 35%;
+    left: 103%;
+    border-color: transparent transparent transparent black ;
 }

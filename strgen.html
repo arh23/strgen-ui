@@ -21,9 +21,26 @@
 
     <section class="main_area">
     <div class="toolbar">
-        <div class="toolbar-button" id="logs">View logs</div>
-        <div class="toolbar-button" id="options">Config</div>
-        <div class="toolbar-button" id="docs">View docs</div>
+        <div class="toolbar-button" id="logs">
+        	<img src="img/log.svg"></img>
+        	<div class="tooltip">
+        		<span class="tooltiptextleft">Logs</span>
+        	</div>
+        </div>
+
+        <div class="toolbar-button" id="options">
+        	<img src="img/options.svg"></img>
+        	<div class="tooltip">
+        		<span class="tooltiptext">Options</span>
+        	</div>
+        </div>
+
+        <div class="toolbar-button" id="docs">
+        	<img src="img/doc.svg"></img>
+        	<div class="tooltip">
+        		<span class="tooltiptext">Documentation</span>
+        	</div>
+        </div>
     </div>
     <form name="regex_form" action="javascript:void(0);">
         <!--form to contain the two textboxes and button-->
@@ -43,7 +60,7 @@
     </section>
 
     <section class="config">
-        <div class="config-header" id="configheader">Configuration</div>
+        <div class="config-header" id="configheader">Options</div>
         <div class="config-container"> 
             <input type="checkbox" id="allowduplicates" checked /> 
             <label class="checkbox-label" for="allowduplicates">Allow Duplicate Characters</label><br>
