@@ -4,7 +4,7 @@ var count = 0;
 function initialize_generator() {
 	try {
 	    document.getElementById('stringvalue').innerHTML = "";
-	    document.getElementById('error').innerHTML = "";
+	    document.getElementById('notification').innerHTML = "";
 	    var pattern = document.getElementById('templatebox').value;
 	    var allow_duplicate_characters = document.getElementById('allowduplicates').checked;
 	    var enable_logging = document.getElementById('enablelogging').checked;
@@ -16,12 +16,22 @@ function initialize_generator() {
 	    generator.allow_duplicate_characters = allow_duplicate_characters;
 	    generator.allow_logging = enable_logging;
 	    generator.reporting_type = reporting_type;
-	    generator.error_output_id = "error";
+	    generator.error_output_id = "notification";
 
 	    var generated_string = generator.createString();
+
+        if (document.getElementById("notification").innerHTML != "") {
+            display_error("Warning! ", undefined, 15000, 'var(--warning-colour'); 
+        } else {
+            $("#notification").stop(true);
+            $("#notification").fadeOut("fast").empty();  
+        }
+
 	    document.getElementById("stringvalue").innerHTML = generated_string;
 	    record_value(pattern, generated_string, generator.generator_log);
+
 	} catch(error) {
+        display_error("Error! ", error.message);
 	    console.error(error.message);
 	    console.error(error.stack);
 	}
@@ -100,3 +110,25 @@ function create_fields(pattern, generated_output, count, log_label, log_array) {
     a.href = "data:text/plain;charset=utf-8," + export_content;
     a.innerHTML = "Export";
 };
+
+function display_error(caption, message, fade = 5000, colour = 'var(--active-colour') {
+    $("#notification").stop(true, true);
+
+    $("#notification").css('background-color', colour);
+
+    if (message != undefined) {
+        $("#notification").fadeIn("fast").append(message);
+    } else {
+        $("#notification").fadeIn("fast");
+    }
+
+    var element = document.getElementById("notification");
+
+    if(element.firstElementChild != null && element.firstElementChild.tagName == "BR") {
+        element.removeChild(element.firstElementChild);
+    }
+
+    $("#notification").prepend(caption);
+
+    $("#notification").delay(fade).fadeOut("slow");     
+}    

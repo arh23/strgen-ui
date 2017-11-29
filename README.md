@@ -9,7 +9,7 @@ This is the UI project, see [strgen-js](https://github.com/arh23/strgen-js) for 
 Requires NodeJS. To use this UI:
 
 1. Clone this repo.
-2. Inside *strgen-ui/*, run:
+2. Inside *strgen-ui*, run:
 
 ~~~~
 npm install

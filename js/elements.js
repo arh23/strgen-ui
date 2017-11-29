@@ -72,6 +72,11 @@ $(document).ready(function(){
         }
     });
 
+    $("#notification").click(function() {
+        $("#notification").stop(true);
+        $("#notification").fadeOut("slow");
+    });
+
     function toggle_ref(state) {
         if($("div.ref-container").css("display") == "none" && state == "close") {
             $("div.ref-header").css({display:'flex'}).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'63.56px'});
