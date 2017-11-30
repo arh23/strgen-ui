@@ -1,10 +1,12 @@
 var history = new Array();
 var count = 0;
+var notification_count = 0;
 
 function initialize_generator() {
 	try {
 	    document.getElementById('stringvalue').innerHTML = "";
-	    document.getElementById('notification').innerHTML = "";
+	    $('.notification').remove();
+        //notification_count = 0;
 	    var pattern = document.getElementById('templatebox').value;
 	    var allow_duplicate_characters = document.getElementById('allowduplicates').checked;
 	    var enable_logging = document.getElementById('enablelogging').checked;
@@ -16,22 +18,18 @@ function initialize_generator() {
 	    generator.allow_duplicate_characters = allow_duplicate_characters;
 	    generator.allow_logging = enable_logging;
 	    generator.reporting_type = reporting_type;
-	    generator.error_output_id = "notification";
+	    generator.store_errors = true;
 
 	    var generated_string = generator.createString();
 
-        if (document.getElementById("notification").innerHTML != "") {
-            display_error("Warning! ", undefined, 15000, 'var(--warning-colour'); 
-        } else {
-            $("#notification").stop(true);
-            $("#notification").fadeOut("fast").empty();  
-        }
+        get_errors(generator);
 
 	    document.getElementById("stringvalue").innerHTML = generated_string;
 	    record_value(pattern, generated_string, generator.generator_log);
 
 	} catch(error) {
         display_error("Error! ", error.message);
+        get_errors(generator);
 	    console.error(error.message);
 	    console.error(error.stack);
 	}
@@ -112,23 +110,48 @@ function create_fields(pattern, generated_output, count, log_label, log_array) {
 };
 
 function display_error(caption, message, fade = 5000, colour = 'var(--active-colour') {
-    $("#notification").stop(true, true);
+    notification_count +=1;
 
-    $("#notification").css('background-color', colour);
+    var notifElement = document.createElement("div");
+    var notifId = "notif_" + notification_count;
+
+    notifElement.setAttribute("id", notifId);
+    notifElement.setAttribute("class", "notification");
+    notifElement.setAttribute("style", "display: none");
+
+    document.getElementById("notification-area").appendChild(notifElement);
+
+    notifId = "#" + notifId;
+
+    var timer = null;
+
+    if (timer) { 
+        window.clearTimeout(timer); timer = null;
+    };
+
+    $(notifId).stop(true, true);
+
+    $(notifId).css('background-color', colour);
 
     if (message != undefined) {
-        $("#notification").fadeIn("fast").append(message);
+        $(notifId).fadeIn("fast").append(message);
     } else {
-        $("#notification").fadeIn("fast");
+        $(notifId).fadeIn("fast");
     }
 
-    var element = document.getElementById("notification");
+    $(notifId + " br:lt(1)").remove();
 
-    if(element.firstElementChild != null && element.firstElementChild.tagName == "BR") {
-        element.removeChild(element.firstElementChild);
+    $(notifId).prepend("<b>" + caption + "</b><br />");
+
+    timer = window.setTimeout(function() { 
+        $(notifId).fadeOut("slow").qremove();    
+    }, fade);
+};
+
+function get_errors(generator) {
+    if (generator.error_list != null) {
+        for (message in generator.error_list) {
+            display_error("Warning! ", generator.error_list[message], 15000, 'var(--warning-colour');
+        }
     }
-
-    $("#notification").prepend(caption);
-
-    $("#notification").delay(fade).fadeOut("slow");     
-}    
+}

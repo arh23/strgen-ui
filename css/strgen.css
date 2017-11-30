@@ -427,10 +427,20 @@ h1, h3, h4 {
     border-color: transparent transparent transparent black ;
 }
 
-#notification {
+#notification-area {
     position:fixed;
+    /*border: thin solid #000000;*/
+    padding-left:13px;
+    padding-right:13px;
+    top:23px;
+    right: 1%;
+    width: 16vw;
+    height: 95%; 
+}
+
+.notification {
+    /*position:fixed;*/
     z-index:105;
-    font-weight:bold;
     color:white;
     background-color:var(--active-colour);
     border: thin solid #000000;
@@ -438,9 +448,14 @@ h1, h3, h4 {
     padding-bottom:6px;
     padding-left:13px;
     padding-right:13px;
-    top:10px;
-    right: 5%;
-    width: 12vw;
+    
+    margin-left: 5px;
+    margin-top: 7px;
+    
+    min-width: 12vw;
+    max-width: 13vw;
     cursor: pointer;
-    box-shadow: 5px 4px 2px silver
+    box-shadow: 5px 4px 2px silver;
+    word-wrap: break-word;
+    display: block;
 }

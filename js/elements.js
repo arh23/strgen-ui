@@ -13,6 +13,12 @@ $.fn.extend({
             $(this).text(text);
             next();
         });
+    },
+    qremove: function() {
+        return $(this).queue(function(next) {
+            $(this).remove();
+            next();
+        });
     }
 });
 
@@ -72,9 +78,9 @@ $(document).ready(function(){
         }
     });
 
-    $("#notification").click(function() {
-        $("#notification").stop(true);
-        $("#notification").fadeOut("slow");
+    $(document).on("click", ".notification", function() {
+        $(this).stop(true);
+        $(this).fadeOut("slow").qremove();
     });
 
     function toggle_ref(state) {
