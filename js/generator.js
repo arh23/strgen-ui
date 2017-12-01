@@ -26,7 +26,6 @@ function initialize_generator() {
 
 	    document.getElementById("stringvalue").innerHTML = generated_string;
 	    record_value(pattern, generated_string, generator.generator_log);
-
 	} catch(error) {
         display_error("Error! ", error.message);
         get_errors(generator);
@@ -37,7 +36,12 @@ function initialize_generator() {
 
 function record_value(pattern, generated_output, log_array) {
     if (log_array != "") {
-        create_fields(pattern, generated_output, count, pattern + " - " + generated_output, log_array);
+        if (generated_output != "") {
+            create_fields(pattern, generated_output, count, pattern + " - " + generated_output, log_array);
+        } else {
+            create_fields(pattern, generated_output, count, pattern + " - no string generated", log_array);
+        }
+        
         count += 1;
     }
 };
@@ -150,8 +154,12 @@ function display_error(caption, message, fade = 5000, colour = 'var(--active-col
 
 function get_errors(generator) {
     if (generator.error_list != null) {
-        for (message in generator.error_list) {
-            display_error("Warning! ", generator.error_list[message], 15000, 'var(--warning-colour');
+        for (error in generator.error_list) {
+            if (generator.error_list[error].state == "warning") {
+                display_error("Warning! ", generator.error_list[error].msg, 15000, 'var(--warning-colour');
+            } else if (generator.error_list[error].state == "error") {
+                display_error("Error! ", generator.error_list[error].msg, 5000, 'var(--active-colour');
+            }
         }
     }
 }
