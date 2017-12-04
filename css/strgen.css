@@ -278,6 +278,14 @@ body {
     right: 0;
     bottom: 0;
     
+    word-wrap: break-word;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    
+    max-height: 44vh;/*300px;/*1250px;*/
+    width: inherit;
+    overflow-x: hidden;
+    
 }
 .doc {
     /*width: 44.68%%;*/
@@ -356,8 +364,16 @@ h1, h3, h4 {
 .content_body p, .content_body li, .content h4, .history_header h4, .history_record p {
     color: unset;
     letter-spacing: unset;
-    
 }
+
+hr {
+    color: black;
+    border-style: solid;
+    border-bottom: 0.25px;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
 /* ------------------------------------- */
 /* general page element css */
 /* ------------------------------------- */
