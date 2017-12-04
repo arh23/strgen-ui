@@ -24,7 +24,12 @@ function initialize_generator() {
 
         get_errors(generator);
 
-	    document.getElementById("stringvalue").innerHTML = generated_string;
+        if(generated_string != undefined) {
+           document.getElementById("stringvalue").innerHTML = generated_string; 
+        } else {
+            generated_string = "";
+        }
+	    
 	    record_value(pattern, generated_string, generator.generator_log);
 	} catch(error) {
         display_error("Error! ", error.message);
@@ -36,12 +41,16 @@ function initialize_generator() {
 
 function record_value(pattern, generated_output, log_array) {
     if (log_array != "") {
-        if (generated_output != "") {
-            create_fields(pattern, generated_output, count, pattern + " - " + generated_output, log_array);
-        } else {
-            create_fields(pattern, generated_output, count, pattern + " - no string generated", log_array);
+        if (pattern == "") {
+            pattern = "no pattern";
         }
-        
+
+        if (generated_output == "") {
+            generated_output = "no string generated";
+        }
+
+        create_fields(pattern, generated_output, count, pattern + " - " + generated_output, log_array);
+
         count += 1;
     }
 };
