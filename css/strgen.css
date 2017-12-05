@@ -177,7 +177,7 @@ body {
     padding-bottom: 4px;
     text-align: left;
     float: left;
-    width: 89%;
+    width: 90%;
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -211,7 +211,7 @@ body {
     background-color: white;
     text-align: left;
     max-height: 200px;
-    max-width: 98%;
+    max-width: 99%;
     margin: 0px;
     
     overflow: auto;
