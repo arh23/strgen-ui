@@ -14,7 +14,7 @@
 }
 
 h1.title {
-    font-size: 3em;
+    font-size: 2.5em;
     margin-top: 5px;
     margin-bottom: 5px;
     
@@ -29,6 +29,11 @@ h1.title {
 
 span.highlight {
     color: #b80000;
+}
+
+h3.sub-text {
+    font-size: 16px;
+    margin-top: 0px;
 }
 
 body {
@@ -68,8 +73,8 @@ body {
 }
 
 .inputwrap #templatebox {
-    width: 50%;
-    padding: 0px;
+    width: 65%;
+    padding: 1px;
 }
 
 .inputwrap #error {
@@ -108,9 +113,12 @@ body {
     align-items: center;
     
     width: 60vw;
-    height: 63.56px;
+    height: 4vh; /*63.56px;*/
     font-size: 16px;
     font-weight: bold;
+    
+    padding-top: 5px;
+    padding-bottom: 5px;
 
     /*make it so text in the button cannot be selected*/
     -webkit-user-select: none; /* Chrome/Safari/Opera */
@@ -133,9 +141,12 @@ body {
     padding-top: 3px;
     padding-bottom: 3px;
     
-    max-height: 44vh;/*300px;/*1250px;*/
+    position: absolute;
+    max-height: 44vh;
     width: inherit;
     overflow-x: hidden;
+    
+    font-size: 13px;
 }
 
 .ref .ref-container {
@@ -285,72 +296,16 @@ body {
     max-height: 44vh;/*300px;/*1250px;*/
     width: inherit;
     overflow-x: hidden;
-    
-}
+}   
+
 .doc {
-    /*width: 44.68%%;*/
-    /*border-top: thin solid #000000;*/
     font-family: verdana;
-}
-
-.content .accordion_icon {
-    text-align: center;
-    float: right;
-    display: inline;
-    width: 30px;
-}
-
-.content h4 {
-    text-align: center !important;
-    display: inline;
-    padding-left: 30px;
 }
 
 .doc div *{
     text-align: justify;
     margin: 0 auto;
-    width: 60em; 
-    /*padding-left: 800px;*/
-    /*padding-right: 800px;*/ /*this solution doesn't scale very well*/
-}
-
-.content, .doc .intro  {
-    padding-top: 8px;
-    /*
-    border-right: thin solid #000000;
-    border-left: thin solid #000000;
-    */
-    border-bottom: thin solid #000000;
-
-    text-align: center;
-    margin: 0 auto;
-    width: 60vw;
-    min-height: 29px;
-    background-color: var(--element-colour);
-}
-
-.content .content_body {
-    display: none;
-    position: relative;
-    
-    background-color: white !important;
-    color: black !important;
-    
-    z-index: 100;
-    
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top:11px;
-    
-    word-wrap: break-word;
-    width: 60vw;
-    
-    border-top: thin solid #000000;
-    border-bottom: thin solid #000000;
-}
-
-.content .content_body p {
-  width: 95%;
+    width: 58vw;
 }
 
 a {
@@ -372,6 +327,7 @@ hr {
     border-bottom: 0.25px;
     margin-top: 10px !important;
     margin-bottom: 10px !important;
+    width: 60vw !important;
 }
 
 /* ------------------------------------- */

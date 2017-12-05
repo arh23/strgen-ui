@@ -30,7 +30,7 @@ $(document).ready(function(){
             if($("div.config-container").css("display") != "none") {
                 toggle_options("close", "#options"); 
             }
-            toggle_log("open", this);
+            setTimeout(toggle_log("open", this), 2000);
         } else {
             state = "close";
             toggle_log("close", this);
@@ -45,7 +45,7 @@ $(document).ready(function(){
             if($("div.history_list").css("display") != "none") {
                 toggle_log("close", "#logs"); 
             }
-            toggle_options("open", this);
+            setTimeout(toggle_options("open", this), 2000);
         } else {
             state = "close";
             toggle_options("close", this);
@@ -85,11 +85,12 @@ $(document).ready(function(){
 
     function toggle_ref(state) {
         if($("div.ref-container").css("display") == "none" && state == "close") {
-            $("div.ref-header").css({display:'flex'}).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'63.56px'});
-            $("div.ref-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'});
+            $("div.ref-header").css({display:'flex'}).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'4vh'}); //height:'63.56px'
+            $("div.ref-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
             $("div.ref-header").text("Reference");
             $("div.ref-container").slideToggle('fast');
         } else if(state == "open") {
+            $("div.ref-header").text("");
             $("div.ref-container").slideUp(100);
             $("div.ref-header").delay(150).qcss({display:'none'})       
         }
@@ -99,15 +100,16 @@ $(document).ready(function(){
         if (state == "open") {
             $(element).css({backgroundColor:bgColour}).css({color:'white'});
             $(element).find("img").attr("src","img/options-active.svg");
-            $("div.config-header").css({display:'flex'}).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'63.56px'});
-            $("div.config-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'});
+            $("div.config-header").css({display:'flex'}).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'4vh'}); //height:'63.56px'
+            $("div.config-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
             $("div.config-header").text("Options");
             $("div.config-container").slideToggle('fast');           
         } else if (state == "close") {
+            $("div.config-header").text("");
             $(element).css({backgroundColor:'white'}).css({color:'initial'});
             $(element).find("img").attr("src","img/options.svg");
-            $("div.config-container").slideUp(100);
-            $("div.config-header").delay(150).qcss({display:'none'});
+            $("div.config-container").css({display:'none'});/*$("div.config-container").slideUp(100);*/
+            $("div.config-header").qcss({display:'none'});
         }
     }
 
@@ -115,15 +117,16 @@ $(document).ready(function(){
         if (state == "open") {
             $(element).css({backgroundColor:bgColour}).css({color:'white'}).attr("src","img/log-active.svg");
             $(element).find("img").attr("src","img/log-active.svg");
-            $("div.history_header").css({display:'flex'}).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'63.56px'});
-            $("div.history_header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'});
+            $("div.history_header").css({display:'flex'}).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'4vh'}); //height:'63.56px'
+            $("div.history_header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
             $("div.history_header").text("Logs");
             $("div.history_list").slideToggle('fast');         
         } else if (state == "close") {
+            $("div.history_header").text("");
             $(element).css({backgroundColor:'white'}).css({color:'initial'});
             $(element).find("img").attr("src","img/log.svg");
-            $("div.history_list").slideUp(100);
-            $("div.history_header").delay(150).qcss({display:'none'});
+            $("div.history_list").css({display:'none'})/*$("div.history_list").slideUp(100);*/
+            $("div.history_header").qcss({display:'none'});
             /*$("div.history_header").delay(125).qcss({height:'0x'}).qcss({width:'0px'}).qcss({marginTop:'0px'});*/
             /*$("div.history_header").delay(25).qcss({border:'thin solid #000000'}).qcss({fontWeight:''}).qcss({fontSize:'13.3333px'}).qtext("View Logs");*/
         }
