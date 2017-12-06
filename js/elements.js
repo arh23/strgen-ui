@@ -122,8 +122,7 @@ $(document).ready(function(){
             $("div.config-header").css({display:'flex'}).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'4vh'}); //height:'63.56px'
             $("div.config-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
             $("div.config-header").text("Options");
-            $("div.config-container").slideToggle('fast');     
-            $("div.config-container").css({display:'grid'});      
+            $("div.config-container").slideToggle('fast').qcss({display:'grid'});
         } else if (state == "close") {
             $("div.config-header").text("");
             $(element).css({backgroundColor:'white'}).css({color:'initial'});
