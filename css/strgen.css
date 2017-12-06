@@ -28,7 +28,7 @@ h1.title {
 }
 
 span.highlight {
-    color: #b80000;
+    color: var(--hover-colour);
 }
 
 h3.sub-text {
@@ -56,6 +56,7 @@ h3.sub-text {
         padding-bottom: 8px;
     }
 }
+
 body {
     /*background-color: lightblue;*/
     background-attachment: fixed;
@@ -165,7 +166,7 @@ body {
     padding-bottom: 3px;
     
     position: absolute;
-    max-height: 37%;/*max-height: 44vh;*/
+    max-height: 40%;/*max-height: 44vh;*/
     width: inherit;
     overflow-x: hidden;
     
@@ -296,6 +297,15 @@ body {
     float: right;
     border-right: initial;
     border-left: thin solid;
+}
+
+.pattern-ex, .predefined-ex {
+    color: var(--hover-colour);
+}
+
+.pattern-ex:hover , .predefined-ex:hover {
+    color: var(--active-colour);
+    cursor: pointer;
 }
 /* ------------------------------------- */
 /* main doc page css */

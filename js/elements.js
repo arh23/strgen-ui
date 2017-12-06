@@ -69,6 +69,25 @@ $(document).ready(function(){
         }
     });
 
+    $(document).on("click", ".pattern-ex", function() {
+        document.getElementById("templatebox").value = $(this).text();
+        initialize_generator();
+    });
+
+    $(document).on("click", ".predefined-ex", function() {
+        var range = $(this).text();
+        var pattern = document.getElementById("templatebox").value;
+
+        if (document.getElementById("templatebox").value == "") {
+            pattern = "[]"
+        }
+
+        console.log(range);
+        pattern = pattern.replace("]", range + "]");
+
+        document.getElementById("templatebox").value = pattern;
+    });
+
     $("#enablelogging").change(function(){
         if ($(this).is(":checked"))
         {

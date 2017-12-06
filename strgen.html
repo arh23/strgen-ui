@@ -87,36 +87,38 @@
         <div class="ref-header" id="refheader">Reference</div>
         <div class="ref-container">
             <div class="ref-content">
+                <p>Click on the example patterns below, or enter a pattern above, to generate a string.</p>
+
                 <p>To generate a string containing 10 characters from "a" to "z":</p> 
-                <p><i>[a-z]{10}</i></p> 
+                <p><i><span class="pattern-ex">[a-z]{10}</span></i></p> 
 
                 <p>To generate a string using a quantifier between 3 and 6:</p> 
-                <p><i>[a-z]{3,6} or [a-z]{3:6} or [a-z]{3-6}</i></p> 
+                <p><i><span class="pattern-ex">[a-z]{3,6}</span> or <span class="pattern-ex">[a-z]{3:6}</span> or <span class="pattern-ex">[a-z]{3-6}</span></i></p> 
 
                 <p>To generate a string that uses fixed text:</p> 
-                <p><i>text[a-z]{10}</i></p> 
+                <p><i><span class="pattern-ex">text[a-z]{10}</span></i></p> 
 
                 <p>To generate a string from the combination of two other strings:</p> 
-                <p><i>(word1&word2)</i></p>
+                <p><i><span class="pattern-ex">(word1&word2)</span></i></p>
 
                 <p>To pick a string from a set of two strings:</p> 
-                <p><i>(word1|word2)</i></p> 
+                <p><i><span class="pattern-ex">(word1|word2)</span></i></p> 
 
                 <p>The following will pick a character from a predefined set of characters:</p>
-                <ul >
-                    <li>\w - word characters</li>
-                    <li>\p - punctuation characters</li>
-                    <li>\d - digits</li>
-                    <li>\c - lower case characters</li>
-                    <li>\u - upper case characters</li>
-                    <li>\l - letters</li>
-                    <li>\h - hex digits</li>
-                    <li>\H - hex digits (lower and upper case)</li>
-                    <li>\p - octal digits</li>
+                <ul>
+                    <li><span class="predefined-ex">\w</span> - word characters</li>
+                    <li><span class="predefined-ex">\p</span> - punctuation characters</li>
+                    <li><span class="predefined-ex">\d</span> - digits</li>
+                    <li><span class="predefined-ex">\c</span> - lower case characters</li>
+                    <li><span class="predefined-ex">\u</span> - upper case characters</li>
+                    <li><span class="predefined-ex">\l</span> - letters</li>
+                    <li><span class="predefined-ex">\h</span> - hex digits</li>
+                    <li><span class="predefined-ex">\H</span> - hex digits (lower and upper case)</li>
+                    <li><span class="predefined-ex">\o</span> - octal digits</li>
                 </ul>
                 <p>For example:</p>
 
-                <p><i>[\w]{10}</i></p>
+                <p><i><span class="pattern-ex">[\w]{10}</span></i></p>
             </div>
         </div>
     </section>
