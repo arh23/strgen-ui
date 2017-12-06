@@ -62,19 +62,25 @@
 
     <section class="config">
         <div class="config-header" id="configheader">Options</div>
-        <div class="config-container"> 
-            <input type="checkbox" id="allowduplicates" checked /> 
-            <label class="checkbox-label" for="allowduplicates">Allow Duplicate Characters</label><br>
+        <div class="config-container">  
+            <label class="checkbox-label" for="allowduplicates">Allow Duplicate Characters</label>
+            <input type="checkbox" class="config-control input-checkbox" id="allowduplicates" checked />
+            <!--
+            <input type="checkbox" class="config-control input-checkbox indent" id="allowduplicates" checked /> 
+            <label class="checkbox-label" for="allowduplicates">Allow duplication via multiple characters</label>
 
-            <input type="checkbox" class="enable_logging" id="enablelogging" /> 
-            <label class="checkbox-label" for="enabledlogging">Enable Logging</label><br>
-
+            <input type="checkbox" class="config-control input-checkbox indent" id="allowduplicates" /> 
+            <label class="checkbox-label" for="allowduplicates">Ignore case of duplicates</label>
+            --> 
+            <label class="checkbox-label" for="enabledlogging">Enable Logging</label>
+            <input type="checkbox" class="config-control input-checkbox enable_logging" id="enablelogging" />
+            
             <label class="dropdown-label" for=reportingdropdown> Reporting type: </label>
-            <select id=reportingdropdown>
+            <select class="config-control" id=reportingdropdown>
                 <option value="full">Full</option>
                 <option value="less">Less</option>
                 <option value="none">None</option>
-            </select> <br>
+            </select>
         </div>
     </section>
 

@@ -13,7 +13,7 @@ function initialize_generator() {
 	    var reporting_type = document.getElementById('reportingdropdown').value;
 
 	    var generator = new Strgen();
-	        
+        
 	    generator.pattern = pattern;
 	    generator.allow_duplicate_characters = allow_duplicate_characters;
 	    generator.allow_logging = enable_logging;

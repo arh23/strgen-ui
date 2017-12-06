@@ -173,6 +173,17 @@ body {
     font-size: 13px;
 }
 
+.config .config-container {
+    text-align: center;
+    grid-template-rows: auto;
+    grid-template-columns: 48% 48%;
+    align-items: center;
+}
+
+.input-checkbox {
+      
+}
+
 .ref .ref-container {
     display: block;
     width: inherit;
