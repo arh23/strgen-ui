@@ -36,6 +36,26 @@ h3.sub-text {
     margin-top: 0px;
 }
 
+@media only screen and (max-width: 1026px) {
+    h3.sub-text {
+        display: none;
+    }
+    
+    h1.title {
+        margin-top: -5px;
+        margin-bottom: 2px;
+        font-size: 2em;
+    }
+    
+    .inputwrap p {
+        font-size: 14px;
+        margin: 8px;
+    }
+    
+    section.main_area {
+        padding-bottom: 8px;
+    }
+}
 body {
     /*background-color: lightblue;*/
     background-attachment: fixed;
@@ -43,7 +63,7 @@ body {
     text-align: center;
     font-family: verdana;
     font-size: 16px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .backlayer {
@@ -65,6 +85,9 @@ body {
     border-right: solid 1px #b80000;
 }
 
+.inputwrap {
+    padding-bottom: 10px;
+}
 .inputwrap input, textarea {
     text-align: center;
     font-family: verdana;
@@ -142,7 +165,7 @@ body {
     padding-bottom: 3px;
     
     position: absolute;
-    max-height: 44vh;
+    max-height: 37%;/*max-height: 44vh;*/
     width: inherit;
     overflow-x: hidden;
     
