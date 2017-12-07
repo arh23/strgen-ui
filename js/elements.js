@@ -107,11 +107,13 @@ $(document).ready(function(){
             $("div.ref-header").css({display:'flex'}).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'4vh'}); //height:'63.56px'
             $("div.ref-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
             $("div.ref-header").text("Reference");
-            $("div.ref-container").slideToggle('fast');
+            //$("div.ref-container").slideToggle('fast');
+            $("div.ref-container").qcss({display:'block'});
         } else if(state == "open") {
             $("div.ref-header").text("");
-            $("div.ref-container").slideUp(100);
-            $("div.ref-header").delay(150).qcss({display:'none'})       
+            //$("div.ref-container").slideUp(100);
+            $("div.ref-container").qcss({display:'none'});
+            $("div.ref-header").qcss({display:'none'})       
         }
     }
 
@@ -122,7 +124,8 @@ $(document).ready(function(){
             $("div.config-header").css({display:'flex'}).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'4vh'}); //height:'63.56px'
             $("div.config-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
             $("div.config-header").text("Options");
-            $("div.config-container").slideToggle('fast').qcss({display:'grid'});
+            //$("div.config-container").slideToggle('fast').qcss({display:'grid'});
+            $("div.config-container").qcss({display:'grid'});
         } else if (state == "close") {
             $("div.config-header").text("");
             $(element).css({backgroundColor:'white'}).css({color:'initial'});
@@ -139,7 +142,8 @@ $(document).ready(function(){
             $("div.history_header").css({display:'flex'}).css({marginTop:'0px'}).css({width:'60vw'}).css({height:'4vh'}); //height:'63.56px'
             $("div.history_header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
             $("div.history_header").text("Logs");
-            $("div.history_list").slideToggle('fast');         
+            //$("div.history_list").slideToggle('fast');     
+            $("div.history_list").qcss({display:'block'});    
         } else if (state == "close") {
             $("div.history_header").text("");
             $(element).css({backgroundColor:'white'}).css({color:'initial'});

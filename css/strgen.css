@@ -177,6 +177,7 @@ body {
     text-align: center;
     grid-template-rows: auto;
     grid-template-columns: 48% 48%;
+    grid-row-gap: 7px;
     align-items: center;
 }
 
