@@ -11,6 +11,8 @@ function initialize_generator() {
 	    var allow_duplicate_characters = document.getElementById('allowduplicates').checked;
 	    var enable_logging = document.getElementById('enablelogging').checked;
 	    var reporting_type = document.getElementById('reportingdropdown').value;
+        var allow_multiple_instances =  document.getElementById('multipleduplicates').checked;
+        var ignore_duplicate_case =  document.getElementById('caseduplicates').checked;
 
 	    var generator = new Strgen();
         
@@ -19,6 +21,8 @@ function initialize_generator() {
 	    generator.allow_logging = enable_logging;
 	    generator.reporting_type = reporting_type;
 	    generator.store_errors = true;
+        generator.allow_multiple_instances = allow_multiple_instances;
+        generator.ignore_duplicate_case = ignore_duplicate_case;
 
 	    var generated_string = generator.createString();
 

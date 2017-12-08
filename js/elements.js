@@ -78,8 +78,10 @@ $(document).ready(function(){
         var range = $(this).text();
         var pattern = document.getElementById("templatebox").value;
 
-        if (document.getElementById("templatebox").value == "") {
+        if (pattern == "") {
             pattern = "[]"
+        } else if (pattern != "" && pattern.indexOf(']') < 0) {
+            pattern += "[]"
         }
 
         console.log(range);
