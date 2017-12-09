@@ -62,25 +62,33 @@
 
     <section class="config">
         <div class="config-header" id="configheader">Options</div>
-        <div class="config-container">  
-            <label class="checkbox-label" for="allowduplicates">Allow Duplicate Characters</label>
-            <input type="checkbox" class="config-control input-checkbox" id="allowduplicates" checked />
+        <div class="config-container"> 
+            <div class="config-section-header">Duplication options</div>
+            <div class="sub-container duplication-options">
+                <label class="checkbox-label" for="allowduplicates">Allow Duplicate Characters</label>
+                <input type="checkbox" class="config-control input-checkbox" id="allowduplicates" checked />
 
-            <label class="checkbox-label" for="multipleduplicates">Allow duplication via multiple characters</label>          
-            <input type="checkbox" class="config-control input-checkbox indent" id="multipleduplicates" checked/> 
+                <label class="checkbox-label" for="multipleduplicates">Allow duplication via multiple characters</label>          
+                <input type="checkbox" class="config-control input-checkbox indent" id="multipleduplicates" checked disabled/> 
 
-            <label class="checkbox-label" for="caseduplicates">Ignore case of duplicates</label>
-            <input type="checkbox" class="config-control input-checkbox indent" id="caseduplicates"/> 
+                <label class="checkbox-label" for="caseduplicates">Ignore case of duplicates</label>
+                <input type="checkbox" class="config-control input-checkbox indent" id="caseduplicates" disabled/>
+            </div>
      
-            <label class="checkbox-label" for="enabledlogging">Enable Logging</label>
-            <input type="checkbox" class="config-control input-checkbox enable_logging" id="enablelogging" />
-            
-            <label class="dropdown-label" for=reportingdropdown> Reporting type: </label>
-            <select class="config-control" id=reportingdropdown>
-                <option value="full">Full</option>
-                <option value="less">Less</option>
-                <option value="none">None</option>
-            </select>
+            <hr class="options-divider" />
+
+            <div class="config-section-header">Logging options</div>
+            <div class="sub-container logging-options">
+                <label class="checkbox-label" for="enabledlogging">Enable Logging</label>
+                <input type="checkbox" class="config-control input-checkbox enable_logging" id="enablelogging" />
+                
+                <label class="dropdown-label" for=reportingdropdown> Reporting type </label>
+                <select class="config-control" id=reportingdropdown>
+                    <option value="full">Full</option>
+                    <option value="less">Less</option>
+                    <option value="none">None</option>
+                </select>
+            </div>
         </div>
     </section>
 

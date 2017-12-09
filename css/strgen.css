@@ -173,16 +173,30 @@ body {
     font-size: 13px;
 }
 
-.config .config-container {
+.config .config-container .sub-container {
     text-align: center;
     grid-template-rows: auto;
-    grid-template-columns: 48% 48%;
+    grid-template-columns: 29vw 29vw;
     grid-row-gap: 7px;
+    grid-column-gap: 2vw;
     align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: grid;
+
+
 }
 
-.input-checkbox {
-      
+.options-divider {
+    border-top: thin dotted #000000;
+    color: black;
+    border-bottom: 0.25px;
+    margin: 0 !important;
+}
+
+.config .config-container .sub-container select {
+    width: 30%;
+    margin: 0 auto;
 }
 
 .ref .ref-container {
