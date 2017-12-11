@@ -89,7 +89,7 @@ $(document).ready(function(){
 
         document.getElementById("templatebox").value = pattern;
     });
-
+/*
     $("#enablelogging").change(function(){
         if ($(this).is(":checked"))
         {
@@ -98,18 +98,31 @@ $(document).ready(function(){
             }
         }
     });
-
+*/
     $("#allowduplicates").change(function(){
         if ($(this).is(":checked") == false) {
             $("#multipleduplicates").prop("disabled", false);
-            $("#caseduplicates").prop("disabled", false);
         }
         else if ($(this).is(":checked") == true) {
             $("#multipleduplicates").prop("disabled", true);
+            $("#multipleduplicates").prop("checked", true);
             $("#caseduplicates").prop("disabled", true);
+            $("#caseduplicates").prop("checked", false);
+
         }
     });
 
+    $("#multipleduplicates").change(function(){
+        if ($(this).is(":checked") == false) {
+            $("#caseduplicates").prop("disabled", false);
+        }
+        else if ($(this).is(":checked") == true) {
+            $("#caseduplicates").prop("disabled", true);
+            $("#caseduplicates").prop("checked", false);
+        }
+    });
+
+            
     $(document).on("click", ".notification", function() {
         $(this).stop(true);
         $(this).fadeOut("slow").qremove();

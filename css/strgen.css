@@ -474,7 +474,7 @@ hr {
     z-index:105;
     color:white;
     background-color:var(--active-colour);
-    border: thin solid #000000;
+    border: thin solid var(--hover-colour);
     padding-top:6px;
     padding-bottom:6px;
     padding-left:13px;
@@ -489,4 +489,6 @@ hr {
     box-shadow: 5px 4px 2px silver;
     word-wrap: break-word;
     display: block;
+    
+    border-radius: 5px;
 }
