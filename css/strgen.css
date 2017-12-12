@@ -183,8 +183,6 @@ body {
     padding-top: 8px;
     padding-bottom: 8px;
     display: grid;
-
-
 }
 
 .options-divider {
@@ -348,7 +346,6 @@ body {
     right: 0;
     bottom: 0;
     
-    word-wrap: break-word;
     padding-top: 3px;
     padding-bottom: 3px;
     
@@ -359,12 +356,19 @@ body {
 
 .doc {
     font-family: verdana;
+    font-size: 13px;
 }
 
 .doc div *{
     text-align: justify;
     margin: 0 auto;
     width: 58vw;
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+}
+
+.doc div ul {
+    padding-left: 28px;
 }
 
 a {
