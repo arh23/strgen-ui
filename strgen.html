@@ -89,6 +89,14 @@
                     <option value="none">None</option>
                 </select>
             </div>
+
+            <hr class="options-divider" />
+
+            <div class="config-section-header">Quantifier options</div>
+            <div class="sub-container quantifier-options">
+                <label class="checkbox-label" for="enablelogging">Symbol quantifier maximum value</label>
+                <input type="text" class="config-control input-textbox max_quantifier" id="maxquantifier" value=10 />
+            </div>
         </div>
     </section>
 
@@ -111,6 +119,13 @@
 
                 <p>To generate a string using a quantifier between 0 and 4:</p>
                 <p><i><span class="pattern-ex">[a-z]{:4}</span> or <span class="pattern-ex">[a-z]{0:4}</span></i> (can also be done using ',' and '-')</p> 
+
+                <p>To generate a string using a symbol quantifier:</p>
+                <ul>
+                    <li><span class="pattern-ex">[a-z]?</span> - to generate using a quantifier of 0 or 1</li>
+                    <li><span class="pattern-ex">[a-z]*</span> - to generate using a quantifier of 0 or 10 (can be changed in the options tab)</li>
+                    <li><span class="pattern-ex">[a-z]+</span> - to generate using a quantifier of 1 or 10 (can be changed in the options tab)</li>
+                </ul>
 
                 <p>To generate a string that uses fixed text:</p> 
                 <p><i><span class="pattern-ex">text[a-z]{10}</span></i></p> 

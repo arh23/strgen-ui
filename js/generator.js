@@ -13,6 +13,7 @@ function initialize_generator() {
 	    var reporting_type = document.getElementById('reportingdropdown').value;
         var allow_multiple_instances =  document.getElementById('multipleduplicates').checked;
         var ignore_duplicate_case =  document.getElementById('caseduplicates').checked;
+        var symbol_quantifier_max = document.getElementById('maxquantifier').value;
 
 	    var generator = new Strgen();
         
@@ -23,6 +24,7 @@ function initialize_generator() {
 	    generator.store_errors = true;
         generator.allow_multiple_instances = allow_multiple_instances;
         generator.ignore_duplicate_case = ignore_duplicate_case;
+        generator.symbol_quantifier_max = symbol_quantifier_max;
 
 	    var generated_string = generator.createString();
 

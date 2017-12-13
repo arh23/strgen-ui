@@ -197,6 +197,12 @@ body {
     margin: 0 auto;
 }
 
+.config .config-container .sub-container input[type="text"] {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .ref .ref-container {
     display: block;
     width: inherit;
