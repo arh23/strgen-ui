@@ -53,6 +53,8 @@ function record_value(pattern, generated_output, log_array) {
 
         if (generated_output == "") {
             generated_output = "no string generated";
+        } else if (generated_output == " ") {
+            generated_output = "white space";
         }
 
         create_fields(pattern, generated_output, count, pattern + " - " + generated_output, log_array);
