@@ -1,12 +1,13 @@
 var history = new Array();
 var count = 0;
 var notification_count = 0;
+var generator = new Strgen();
 
 function initialize_generator() {
 	try {
 	    document.getElementById('stringvalue').innerHTML = "";
 	    $('.notification').remove();
-        //notification_count = 0;
+
 	    var pattern = document.getElementById('templatebox').value;
 	    var allow_duplicate_characters = document.getElementById('allowduplicates').checked;
 	    var enable_logging = document.getElementById('enablelogging').checked;
@@ -14,9 +15,9 @@ function initialize_generator() {
         var allow_multiple_instances =  document.getElementById('multipleduplicates').checked;
         var ignore_duplicate_case =  document.getElementById('caseduplicates').checked;
         var symbol_quantifier_max = document.getElementById('maxquantifier').value;
-
-	    var generator = new Strgen();
         
+        var generator = new Strgen(); // refresh strgen instance
+
 	    generator.pattern = pattern;
 	    generator.allow_duplicate_characters = allow_duplicate_characters;
 	    generator.allow_logging = enable_logging;
@@ -25,6 +26,10 @@ function initialize_generator() {
         generator.allow_multiple_instances = allow_multiple_instances;
         generator.ignore_duplicate_case = ignore_duplicate_case;
         generator.symbol_quantifier_max = symbol_quantifier_max;
+
+        for (preset in generator.preset) {
+            generator.preset[preset].value = document.getElementById(generator.preset[preset].preset_code).value;
+        }
 
 	    var generated_string = generator.createString();
 
@@ -129,6 +134,36 @@ function create_fields(pattern, generated_output, count, log_label, log_array) {
     a.href = "data:text/plain;charset=utf-8," + export_content;
     a.innerHTML = "Export";
 };
+
+function create_preset_options(strgen = generator, count = 0) {
+    var current_id = "preset" + count;
+    var current_count = count;
+    var parent = document.getElementsByClassName("sub-container preset-options")[0];
+
+    var preset = strgen.preset[count].preset_code;
+    var value = strgen.preset[count].value;
+
+    var presetLabel = document.createElement("label"); // create export label
+
+    presetLabel.setAttribute("id", preset + "_label");
+    presetLabel.setAttribute("class", "preset-label");
+    parent.appendChild(presetLabel);
+
+    document.getElementById(preset + "_label").innerHTML = "\\" + preset;
+
+    var presetInput = document.createElement("input"); // create log content
+
+    presetInput.setAttribute("type", "text");
+    presetInput.setAttribute("id", preset);
+    presetInput.setAttribute("class", "preset-content");
+    presetInput.setAttribute("value", value);
+    parent.appendChild(presetInput);
+    count += 1;
+
+    if (strgen.preset.length > count) {
+        this.create_preset_options(strgen, count)
+    }
+}
 
 function display_error(caption, message, fade = 5000, colour = 'var(--active-colour') {
     notification_count +=1;

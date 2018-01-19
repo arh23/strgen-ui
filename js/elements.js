@@ -24,6 +24,7 @@ $.fn.extend({
 
 $(document).ready(function(){
     var state = "";
+    create_preset_options();
     $("#logs").click(function(){
         if($("div.history_list").css("display") == "none") {
             state = "open";
