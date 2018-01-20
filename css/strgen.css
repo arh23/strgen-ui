@@ -36,7 +36,7 @@ h3.sub-text {
     margin-top: 0px;
 }
 
-@media only screen and (max-width: 1026px) {
+@media  screen and (max-width: 1026px), screen and (max-height: 651px) {
     h3.sub-text {
         display: none;
     }
@@ -55,6 +55,10 @@ h3.sub-text {
     section.main_area {
         padding-bottom: 8px;
     }
+        
+    body {
+        overflow-x: hidden;
+    }
 }
 
 body {
@@ -64,7 +68,7 @@ body {
     text-align: center;
     font-family: verdana;
     font-size: 16px;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 .backlayer {
@@ -123,7 +127,7 @@ body {
     height: auto;
 }
 
-.history .history_header, .config .config-header, .ref .ref-header {
+.history .history-header, .config .config-header, .ref .ref-header {
     display: inline-block;
     background-color: var(--element-colour);
     
@@ -157,7 +161,7 @@ body {
     display: flex
 }
 
-.history .history_list, .config .config-container, .ref .ref-container {
+.history .history-list, .config .config-container, .ref .ref-container {
     border-top: thin dotted #000000 0px;
     border-bottom: thin solid #000000;
     display: none;
@@ -166,7 +170,7 @@ body {
     padding-bottom: 3px;
     
     position: absolute;
-    /*max-height: 40%;/*max-height: 44vh;*/
+    /*max-height: 39vh;/*max-height: 44vh;*/
     width: inherit;
     overflow-x: hidden;
     
@@ -229,7 +233,7 @@ body {
     text-align: left;
 }
 
-.history_list .history_record {
+.history-list .history_record {
     margin: 0 auto;
     width: 98.5%;
     display: inline-block;
@@ -285,7 +289,7 @@ body {
     display: none;
 }
 
-.history_list:empty:before {
+.history-list:empty:before {
     content: "Nothing here...";
     color: darkgrey;
     text-align: center;
@@ -396,7 +400,7 @@ h1, h3, h4 {
     letter-spacing: 0.75px;
 }
 
-.content_body p, .content_body li, .content h4, .history_header h4, .history_record p {
+.content_body p, .content_body li, .content h4, .history-header h4, .history_record p {
     color: unset;
     letter-spacing: unset;
 }

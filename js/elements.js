@@ -24,9 +24,12 @@ $.fn.extend({
 
 $(document).ready(function(){
     var state = "";
+
+    resize_content();
     create_preset_options();
+
     $("#logs").click(function(){
-        if($("div.history_list").css("display") == "none") {
+        if($("div.history-list").css("display") == "none") {
             state = "open";
             if($("div.config-container").css("display") != "none") {
                 toggle_options("close", "#options"); 
@@ -43,7 +46,7 @@ $(document).ready(function(){
         var state = "";
         if($("div.config-container").css("display") == "none") {
             state = "open";
-            if($("div.history_list").css("display") != "none") {
+            if($("div.history-list").css("display") != "none") {
                 toggle_log("close", "#logs"); 
             }
             setTimeout(toggle_options("open", this), 2000);
@@ -90,16 +93,7 @@ $(document).ready(function(){
 
         document.getElementById("templatebox").value = pattern;
     });
-/*
-    $("#enablelogging").change(function(){
-        if ($(this).is(":checked"))
-        {
-            if (confirm('Enabling logging can cause performance problems. Are you sure?') == false) {
-                $(this).removeAttr("checked")
-            }
-        }
-    });
-*/
+
     $("#allowduplicates").change(function(){
         if ($(this).is(":checked") == false) {
             $("#multipleduplicates").prop("disabled", false);
@@ -129,12 +123,15 @@ $(document).ready(function(){
         $(this).fadeOut("slow").qremove();
     });
 
+    $(window).resize(function() {
+        resize_content();
+    });
+
     function toggle_ref(state) {
         if($("div.ref-container").css("display") == "none" && state == "close") {
             $("div.ref-header").delay(100).qcss({display:'flex'}).qcss({marginTop:'0px'}).qcss({width:'60vw'}).qcss({height:'4vh'}).qtext("Reference"); //height:'63.56px'
             $("div.ref-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
             $("div.ref-container").delay(110).slideToggle(100);
-            //$("div.ref-container").qcss({display:'block'});
         } else if(state == "open") {
             $("div.ref-container").slideUp(100);
             $("div.ref-header").delay(100).qtext("").qcss({display:'none'});       
@@ -148,7 +145,7 @@ $(document).ready(function(){
             $("div.config-header").delay(100).qcss({display:'flex'}).qcss({marginTop:'0px'}).qcss({width:'60vw'}).qcss({height:'4vh'}).qtext("Options"); //height:'63.56px'
             $("div.config-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
             $("div.config-container").delay(110).slideToggle(100);
-            //$("div.config-container").qcss({display:'grid'});
+
         } else if (state == "close") {
             $("div.config-container").slideUp(100);
             $("div.config-header").delay(100).qtext("").qcss({display:'none'});
@@ -161,13 +158,12 @@ $(document).ready(function(){
         if (state == "open") {
             $(element).css({backgroundColor:bgColour}).css({color:'white'}).attr("src","img/log-active.svg");
             $(element).find("img").attr("src","img/log-active.svg");
-            $("div.history_header").delay(100).qcss({display:'flex'}).qcss({marginTop:'0px'}).qcss({width:'60vw'}).qcss({height:'4vh'}).qtext("Logs"); //height:'63.56px'
-            $("div.history_header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
-            $("div.history_list").delay(110).slideToggle(100);     
-            //$("div.history_list").qcss({display:'block'});    
+            $("div.history-header").delay(100).qcss({display:'flex'}).qcss({marginTop:'0px'}).qcss({width:'60vw'}).qcss({height:'4vh'}).qtext("Logs"); //height:'63.56px'
+            $("div.history-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
+            $("div.history-list").delay(110).slideToggle(100);        
         } else if (state == "close") {
-            $("div.history_list").slideUp(100);
-            $("div.history_header").delay(100).qtext("").qcss({display:'none'});
+            $("div.history-list").slideUp(100);
+            $("div.history-header").delay(100).qtext("").qcss({display:'none'});
             $(element).css({backgroundColor:'white'}).css({color:'initial'});
             $(element).find("img").attr("src","img/log.svg");
         }
@@ -191,5 +187,20 @@ $(document).ready(function(){
         if ($(element).find('p.log_content').css('display') == 'none') {
             $(element).find('.log_label').css('color', 'black').css('padding-left', '0px');
         }       
+    }
+
+    function resize_content() {
+        var window_height = $(window.top).height();
+        var window_width = $(window.top).width();
+
+        if(window_width < 1026) {
+            var new_height = Math.floor((window_height - 353) - (window_height / 50)) + "px";            
+        } else {
+            var new_height = Math.floor((window_height - 353) - (window_height / 7)) + "px";
+        }
+
+        $("div.content-container").css({maxHeight:new_height});
+
+        //console.log('window has resized - window_height: ' + window_height + ', new_height: ' + new_height + ', window_width: ' + window_width);
     }
 });
