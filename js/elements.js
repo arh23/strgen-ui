@@ -193,7 +193,7 @@ $(document).ready(function(){
         var window_height = $(window.top).height();
         var window_width = $(window.top).width();
 
-        if(window_width < 1026) {
+        if(window_width < 1026 | window_height < 651) {
             var new_height = Math.floor((window_height - 353) - (window_height / 50)) + "px";            
         } else {
             var new_height = Math.floor((window_height - 353) - (window_height / 7)) + "px";
@@ -201,6 +201,23 @@ $(document).ready(function(){
 
         $("div.content-container").css({maxHeight:new_height});
 
+        if(window_width < 1026 | window_height < 651) {
+            var new_size = Math.floor(10 + (window_width / 9));
+
+            if(new_size > 60) {
+                new_size = 60 + "px";
+            } else {
+                new_size = new_size + "px";
+            }
+        } else {
+            var new_size = 60 + "px"
+        }
+
+        $("div.toolbar").css({height:new_size});
+        $("div.toolbar-button").css({height:new_size});
+        $("div.toolbar-button").css({width:new_size});
+
+        //console.log('buttons have resized - window_height: ' + window_height + ", window width: " + window_width + ', new_size: ' + new_size);
         //console.log('window has resized - window_height: ' + window_height + ', new_height: ' + new_height + ', window_width: ' + window_width);
     }
 });

@@ -246,7 +246,7 @@ body {
     padding-bottom: 4px;
     text-align: left;
     float: left;
-    width: 90%;
+    width: 37vw;
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -268,19 +268,20 @@ body {
 .history_record .log_export {
     padding-top: 4px;
     padding-bottom: 4px;
-    text-align: right;
+    text-align: center;
     float: right;
-    width: 9%;
+
     white-space: nowrap;
+
 }
 
 .history_record p {
     border: thin dotted #000000;
-    padding: 10px;
+    padding: 0.9%;
     background-color: white;
     text-align: left;
     max-height: 200px;
-    max-width: 99%;
+    width: 98%;
     margin: 0px;
     
     overflow: auto;
@@ -314,13 +315,16 @@ body {
 }
 
 .toolbar {
-    height: 60px;
+    /*height: 6vh;
+    min-height: 60px;*/
     border-bottom: thin solid;
 }
 
 .toolbar-button {
-    width: 60px;
+    /*width: 2vw;
+    min-width: 60px;
     height: inherit;
+    min-height: inherit;*/
     border-right: thin solid;
     
     display: inline-flex;     
