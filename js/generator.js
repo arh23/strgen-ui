@@ -8,21 +8,23 @@ function initialize_generator() {
 	    document.getElementById('stringvalue').innerHTML = "";
 	    $('.notification').remove();
 
-	    var pattern = document.getElementById('templatebox').value;
-	    var allow_duplicate_characters = document.getElementById('allowduplicates').checked;
-	    var enable_logging = document.getElementById('enablelogging').checked;
-	    var reporting_type = document.getElementById('reportingdropdown').value;
+        var pattern = document.getElementById('templatebox').value;
+        var allow_duplicate_characters = document.getElementById('allowduplicates').checked;
+        var enable_logging = document.getElementById('enablelogging').checked;
+        var reporting_type = document.getElementById('reportingdropdown').value;
+        var print_to_console = document.getElementById('printlog').checked;
         var allow_multiple_instances =  document.getElementById('multipleduplicates').checked;
         var ignore_duplicate_case =  document.getElementById('caseduplicates').checked;
         var symbol_quantifier_max = document.getElementById('maxquantifier').value;
         
         var generator = new Strgen(); // refresh strgen instance
 
-	    generator.pattern = pattern;
-	    generator.allow_duplicate_characters = allow_duplicate_characters;
-	    generator.allow_logging = enable_logging;
-	    generator.reporting_type = reporting_type;
-	    generator.store_errors = true;
+        generator.pattern = pattern;
+        generator.allow_duplicate_characters = allow_duplicate_characters;
+        generator.allow_logging = enable_logging;
+        generator.reporting_type = reporting_type;
+        generator.print_to_console = print_to_console;
+        generator.store_errors = true;
         generator.allow_multiple_instances = allow_multiple_instances;
         generator.ignore_duplicate_case = ignore_duplicate_case;
         generator.symbol_quantifier_max = symbol_quantifier_max;
