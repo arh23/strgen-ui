@@ -63,7 +63,7 @@ $(document).ready(function(){
         window.location = 'strgen_doc.html';
     });
 
-    $(document).on("click", ".log_label", function() {
+    $(document).on("click", ".log_bar", function() {
         var element = "#" + $(this).parent().attr('id');
 
         if ($(element).find('p.log_content').css('display') == "none") {
@@ -174,14 +174,17 @@ $(document).ready(function(){
 
         $(element).find('p.log_content').css('display','block').css('border-color', bgColour);    
         $(element).css('background-color', bgColour);
-        $(parent).css('color', 'white').css('padding-left','4px');  
+        //$(parent).css('color', 'white').css('padding-left','4px');  
+        $(element).find('div.log_label').css('color', 'white').css('padding-left', '4px');
         $(element).find('div.log_export a').css('color', 'white').css('padding-right', '4px');
+        resize_content();
     }
 
     function close_log(parent, element) {
         $(element).find('p.log_content').css('display','none');
         $(element).css('background-color', '');
-        $(parent).css('color', 'black').css('padding-left', '0px');
+        //$(parent).css('color', 'black').css('padding-left', '0px');
+        $(element).find('div.log_label').css('color', 'black').css('padding-left', '0px');
         $(element).find('div.log_export a').css('color', linkColour).css('padding-right', '0px');
 
         if ($(element).find('p.log_content').css('display') == 'none') {
@@ -216,6 +219,11 @@ $(document).ready(function(){
         $("div.toolbar").css({height:new_size});
         $("div.toolbar-button").css({height:new_size});
         $("div.toolbar-button").css({width:new_size});
+
+        var log_width = $("div.log_bar").outerWidth() - 9.5;
+        $("p.log_content").css({width:log_width});
+
+        //console.log('log has resized - log_width: ' + log_width);
 
         //console.log('buttons have resized - window_height: ' + window_height + ", window width: " + window_width + ', new_size: ' + new_size);
         //console.log('window has resized - window_height: ' + window_height + ', new_height: ' + new_height + ', window_width: ' + window_width);

@@ -83,11 +83,17 @@ function create_fields(pattern, generated_output, count, log_label, log_array) {
 
         document.getElementById("historylist").appendChild(container);
     }
+    var divBar = document.createElement("div"); // create log label
+
+    divBar.setAttribute("id", current_id + "_bar");
+    divBar.setAttribute("class", "log_bar");
+    document.getElementById(current_id).appendChild(divBar);
+
     var divLabel = document.createElement("div"); // create log label
 
     divLabel.setAttribute("id", current_id + "_label");
     divLabel.setAttribute("class", "log_label");
-    document.getElementById(current_id).appendChild(divLabel);
+    document.getElementById(current_id + "_bar").appendChild(divLabel);
 
     document.getElementById(current_id + "_label").innerHTML = "<b>Log entry " + (current_count + 1) + ":</b> " + log_label;
 
@@ -95,7 +101,7 @@ function create_fields(pattern, generated_output, count, log_label, log_array) {
 
     divExport.setAttribute("id", current_id + "_export");
     divExport.setAttribute("class", "log_export");
-    document.getElementById(current_id).appendChild(divExport);
+    document.getElementById(current_id + "_bar").appendChild(divExport);
 
     var paragraph = document.createElement("p"); // create log content
 

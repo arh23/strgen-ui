@@ -204,6 +204,7 @@ body {
     font-weight: bold;
     padding-bottom: 2px;
 }
+
 .config .config-container .sub-container select {
     width: 30%;
     margin: 0 auto;
@@ -218,6 +219,7 @@ body {
 .config .config-container .sub-container .preset-content { 
     width: 75% !important;
 }
+
 .ref .ref-container {
     display: block;
     width: inherit;
@@ -235,22 +237,20 @@ body {
 
 .history-list .history_record {
     margin: 0 auto;
-    width: 98.5%;
+    width: 98%;
     display: inline-block;
     font-size: 12px;
+    text-align: left;
     /*border-bottom: thin dashed;*/
 }
 
 .history_record .log_label {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    text-align: left;
-    float: left;
     width: 37vw;
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    
+    float:left;
+
     /*make it so text in the button cannot be selected*/
     -webkit-user-select: none; /* Chrome/Safari/Opera */
     -moz-user-select: none; /* Mozilla Firefox */
@@ -260,28 +260,34 @@ body {
     user-select: none;
 }
 
-.history_record .log_label:hover {
+.history_record .log_bar:hover, .history_record .log_label:hover {
     font-style: italic;
     cursor: pointer;
 }
 
-.history_record .log_export {
+.history_record .log_bar {
+    margin: 0px auto 0px auto;
+    min-height: 8px;
     padding-top: 4px;
-    padding-bottom: 4px;
+    padding-bottom: 12px;
+}
+
+.history_record .log_export {
     text-align: center;
     float: right;
-
+    display: inline-block;
+    
     white-space: nowrap;
-
 }
 
 .history_record p {
     border: thin dotted #000000;
-    padding: 0.9%;
+    padding: 4px;
     background-color: white;
+    color: black;
     text-align: left;
     max-height: 200px;
-    width: 98%;
+    /*width: 98%;*/
     margin: 0px;
     
     overflow: auto;
