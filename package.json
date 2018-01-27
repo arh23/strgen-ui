@@ -2,7 +2,7 @@
   "name": "strgen-ui",
   "version": "0.1.0",
   "devDependencies": {
-  	"regexgen" : "git+https://github.com/arh23/strgen-js.git",
-  	"jquery" : "1.12.4"
+  	"strgen" : "git+https://github.com/arh23/strgen-js.git",
+  	"jquery" : "3.3.1"
   }
 }
