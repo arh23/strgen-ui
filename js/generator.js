@@ -3,7 +3,7 @@ var count = 0;
 var notification_count = 0;
 var generator = new Strgen();
 
-function initialize_generator() {
+function initializeGenerator() {
 	try {
 	    document.getElementById('stringvalue').innerHTML = "";
 	    $('.notification').remove();
@@ -35,7 +35,7 @@ function initialize_generator() {
 
 	    var generated_string = generator.createString();
 
-        get_errors(generator);
+        getErrors(generator);
 
         if(generated_string != undefined) {
            document.getElementById("stringvalue").innerHTML = generated_string; 
@@ -43,16 +43,16 @@ function initialize_generator() {
             generated_string = "";
         }
 	    
-	    record_value(pattern, generated_string, generator.generator_log);
+	    recordValue(pattern, generated_string, generator.generator_log);
 	} catch(error) {
-        display_error("Error! ", error.message);
-        get_errors(generator);
+        displayError("Error! ", error.message);
+        getErrors(generator);
 	    console.error(error.message);
 	    console.error(error.stack);
 	}
 };
 
-function record_value(pattern, generated_output, log_array) {
+function recordValue(pattern, generated_output, log_array) {
     if (log_array != "") {
         if (pattern == "") {
             pattern = "no pattern";
@@ -64,13 +64,13 @@ function record_value(pattern, generated_output, log_array) {
             generated_output = "white space";
         }
 
-        create_fields(pattern, generated_output, count, pattern + " - " + generated_output, log_array);
+        createFields(pattern, generated_output, count, pattern + " - " + generated_output, log_array);
 
         count += 1;
     }
 };
 
-function create_fields(pattern, generated_output, count, log_label, log_array) {
+function createFields(pattern, generated_output, count, log_label, log_array) {
     var current_id = "result" + count;
     var current_count = count;
 
@@ -126,7 +126,7 @@ function create_fields(pattern, generated_output, count, log_label, log_array) {
 
     var a = document.getElementById(current_id + "_export").appendChild(
         document.createElement("a")
-        );
+    );
 
     var currentdate = new Date(); 
 
@@ -143,37 +143,46 @@ function create_fields(pattern, generated_output, count, log_label, log_array) {
     a.innerHTML = "Export";
 };
 
-function create_preset_options(strgen = generator, count = 0) {
-    var current_id = "preset" + count;
-    var current_count = count;
-    var parent = document.getElementsByClassName("sub-container preset-options")[0];
-
-    var preset = strgen.preset[count].preset_code;
-    var value = strgen.preset[count].value;
-
-    var presetLabel = document.createElement("label"); // create export label
-
-    presetLabel.setAttribute("id", preset + "_label");
-    presetLabel.setAttribute("class", "preset-label");
-    parent.appendChild(presetLabel);
-
-    document.getElementById(preset + "_label").innerHTML = "\\" + preset;
-
-    var presetInput = document.createElement("input"); // create log content
-
-    presetInput.setAttribute("type", "text");
-    presetInput.setAttribute("id", preset);
-    presetInput.setAttribute("class", "preset-content");
-    presetInput.setAttribute("value", value);
-    parent.appendChild(presetInput);
-    count += 1;
-
+function createPresetOptions(strgen = generator, count = 0) {
     if (strgen.preset.length > count) {
-        this.create_preset_options(strgen, count)
+        var current_id = "preset" + count;
+        var current_count = count;
+        var parent = document.getElementsByClassName("sub-container preset-options")[0];
+
+        var preset = strgen.preset[count].preset_code;
+        var value = strgen.preset[count].value;
+
+        var presetLabel = document.createElement("label"); // create export label
+
+        presetLabel.setAttribute("id", preset + "_label");
+        presetLabel.setAttribute("class", "preset-label");
+        parent.appendChild(presetLabel);
+
+        document.getElementById(preset + "_label").innerHTML = "\\" + preset;
+
+        var presetInput = document.createElement("input"); // create log content
+
+        presetInput.setAttribute("type", "text");
+        presetInput.setAttribute("id", preset);
+        presetInput.setAttribute("class", "preset-content");
+        presetInput.setAttribute("value", value);
+        parent.appendChild(presetInput);
+        count += 1;
+
+        this.createPresetOptions(strgen, count)
     }
 }
 
-function display_error(caption, message, fade = 5000, colour = 'var(--active-colour') {
+function resetPresetOptions(strgen = generator, count = 0) {
+    if (strgen.preset.length > count) {
+        document.getElementById(strgen.preset[count].preset_code).value = strgen.preset[count].value;
+        count += 1;
+
+        this.resetPresetOptions(strgen, count);
+    }
+}
+
+function displayError(caption, message, fade = 5000, colour = 'var(--active-colour') {
     notification_count +=1;
 
     var notifElement = document.createElement("div");
@@ -212,13 +221,13 @@ function display_error(caption, message, fade = 5000, colour = 'var(--active-col
     }, fade);
 };
 
-function get_errors(generator) {
+function getErrors(generator) {
     if (generator.error_list != null) {
         for (error in generator.error_list) {
             if (generator.error_list[error].state == "warning") {
-                display_error("Warning! ", generator.error_list[error].msg, 15000, 'var(--warning-colour');
+                displayError("Warning! ", generator.error_list[error].msg, 15000, 'var(--warning-colour');
             } else if (generator.error_list[error].state == "error") {
-                display_error("Error! ", generator.error_list[error].msg, 5000, 'var(--active-colour');
+                displayError("Error! ", generator.error_list[error].msg, 5000, 'var(--active-colour');
             }
         }
     }

@@ -220,6 +220,10 @@ body {
     width: 75% !important;
 }
 
+.reset-presets {
+    cursor: pointer;
+}
+
 .ref .ref-container {
     display: block;
     width: inherit;

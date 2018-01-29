@@ -25,21 +25,21 @@ $.fn.extend({
 $(document).ready(function(){
     var state = "";
 
-    resize_content();
-    create_preset_options();
+    resizeContent();
+    createPresetOptions();
 
     $("#logs").click(function(){
         if($("div.history-list").css("display") == "none") {
             state = "open";
             if($("div.config-container").css("display") != "none") {
-                toggle_options("close", "#options"); 
+                toggleOptions("close", "#options"); 
             }
-            setTimeout(toggle_log("open", this), 2000);
+            setTimeout(toggleLog("open", this), 2000);
         } else {
             state = "close";
-            toggle_log("close", this);
+            toggleLog("close", this);
         }
-        toggle_ref(state);
+        toggleRef(state);
     });
 
     $("#options").click(function(){
@@ -47,17 +47,17 @@ $(document).ready(function(){
         if($("div.config-container").css("display") == "none") {
             state = "open";
             if($("div.history-list").css("display") != "none") {
-                toggle_log("close", "#logs"); 
+                toggleLog("close", "#logs"); 
             }
-            setTimeout(toggle_options("open", this), 2000);
+            setTimeout(toggleOptions("open", this), 2000);
         } else {
             state = "close";
-            toggle_options("close", this);
+            toggleOptions("close", this);
         }
-        toggle_ref(state);
+        toggleRef(state);
     });
 
-    $("form[name='regex_form']").on('submit', initialize_generator);
+    $("form[name='regex_form']").on('submit', initializeGenerator);
 
     $('#docs').click(function() {
         window.location = 'strgen_doc.html';
@@ -67,15 +67,15 @@ $(document).ready(function(){
         var element = "#" + $(this).parent().attr('id');
 
         if ($(element).find('p.log_content').css('display') == "none") {
-            open_log($(this), element);
+            openLog($(this), element);
         } else {
-            close_log($(this), element);
+            closeLog($(this), element);
         }
     });
 
     $(document).on("click", ".pattern-ex", function() {
         document.getElementById("templatebox").value = $(this).text();
-        initialize_generator();
+        initializeGenerator();
     });
 
     $(document).on("click", ".predefined-ex", function() {
@@ -117,6 +117,9 @@ $(document).ready(function(){
         }
     });
 
+    $(document).on("click", ".reset-presets", function() {
+        resetPresetOptions();
+    });
             
     $(document).on("click", ".notification", function() {
         $(this).stop(true);
@@ -124,10 +127,10 @@ $(document).ready(function(){
     });
 
     $(window).resize(function() {
-        resize_content();
+        resizeContent();
     });
 
-    function toggle_ref(state) {
+    function toggleRef(state) {
         if($("div.ref-container").css("display") == "none" && state == "close") {
             $("div.ref-header").delay(100).qcss({display:'flex'}).qcss({marginTop:'0px'}).qcss({width:'60vw'}).qcss({height:'4vh'}).qtext("Reference"); //height:'63.56px'
             $("div.ref-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
@@ -138,7 +141,7 @@ $(document).ready(function(){
         }
     }
 
-    function toggle_options(state, element) {
+    function toggleOptions(state, element) {
         if (state == "open") {
             $(element).css({backgroundColor:bgColour}).css({color:'white'});
             $(element).find("img").attr("src","img/options-active.svg");
@@ -154,7 +157,7 @@ $(document).ready(function(){
         }
     }
 
-    function toggle_log(state, element) {
+    function toggleLog(state, element) {
         if (state == "open") {
             $(element).css({backgroundColor:bgColour}).css({color:'white'}).attr("src","img/log-active.svg");
             $(element).find("img").attr("src","img/log-active.svg");
@@ -169,18 +172,18 @@ $(document).ready(function(){
         }
     }
 
-    function open_log(parent, element) {
-        close_log(parent, '.history_record'); // close all logs that are currently open
+    function openLog(parent, element) {
+        closeLog(parent, '.history_record'); // close all logs that are currently open
 
         $(element).find('p.log_content').css('display','block').css('border-color', bgColour);    
         $(element).css('background-color', bgColour);
         //$(parent).css('color', 'white').css('padding-left','4px');  
         $(element).find('div.log_label').css('color', 'white').css('padding-left', '4px');
         $(element).find('div.log_export a').css('color', 'white').css('padding-right', '4px');
-        resize_content();
+        resizeContent();
     }
 
-    function close_log(parent, element) {
+    function closeLog(parent, element) {
         $(element).find('p.log_content').css('display','none');
         $(element).css('background-color', '');
         //$(parent).css('color', 'black').css('padding-left', '0px');
@@ -192,7 +195,7 @@ $(document).ready(function(){
         }       
     }
 
-    function resize_content() {
+    function resizeContent() {
         var window_height = $(window.top).height();
         var window_width = $(window.top).width();
 
