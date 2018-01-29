@@ -26,7 +26,7 @@
         <div class="toolbar-button" id="logs">
         	<img src="img/log.svg"></img>
         	<div class="tooltip">
-        		<span class="tooltiptextleft">Logs</span>
+        		<span class="tooltiptext">Logs</span>
         	</div>
         </div>
 
@@ -64,13 +64,13 @@
         <div class="content-container config-container"> 
             <div class="config-section-header">Duplication options</div>
             <div class="sub-container duplication-options">
-                <label class="checkbox-label" for="allowduplicates">Allow Duplicate Characters</label>
+                <label class="options-label" for="allowduplicates">Allow Duplicate Characters</label>
                 <input type="checkbox" class="config-control input-checkbox" id="allowduplicates" checked />
 
-                <label class="checkbox-label" for="multipleduplicates">Allow duplication via multiple characters</label>          
+                <label class="options-label" for="multipleduplicates">Allow duplication via multiple characters</label>          
                 <input type="checkbox" class="config-control input-checkbox indent" id="multipleduplicates" checked disabled/> 
 
-                <label class="checkbox-label" for="caseduplicates">Ignore case of duplicates</label>
+                <label class="options-label" for="caseduplicates">Ignore case of duplicates</label>
                 <input type="checkbox" class="config-control input-checkbox indent" id="caseduplicates" disabled/>
             </div>
      
@@ -78,17 +78,17 @@
 
             <div class="config-section-header">Logging options</div>
             <div class="sub-container logging-options">
-                <label class="checkbox-label" for="enablelogging">Enable Logging <span style="color:var(--active-colour)">(can affect performance)</span></label>
+                <label class="options-label" for="enablelogging">Enable Logging <span style="color:var(--active-colour)">(can affect performance)</span></label>
                 <input type="checkbox" class="config-control input-checkbox enable_logging" id="enablelogging" />
                 
-                <label class="dropdown-label" for=reportingdropdown> Reporting type </label>
+                <label class="options-label" for=reportingdropdown> Reporting type </label>
                 <select class="config-control" id=reportingdropdown>
                     <option value="full">Full</option>
                     <option value="less">Less</option>
                     <option value="none">None</option>
                 </select>
 
-                <label class="checkbox-label" for="printlog">Print log to console <span style="color:var(--active-colour)">(can affect performance)</span></label>
+                <label class="options-label" for="printlog">Print log to console <span style="color:var(--active-colour)">(can affect performance)</span></label>
                 <input type="checkbox" class="config-control input-checkbox enable_logging" id="printlog" checked/>
             </div>
 
@@ -96,7 +96,7 @@
 
             <div class="config-section-header">Quantifier options</div>
             <div class="sub-container quantifier-options">
-                <label>Symbol quantifier maximum value</label>
+                <label class="options-label">Symbol quantifier maximum value</label>
                 <input type="text" class="config-control input-textbox max_quantifier" id="maxquantifier" value=10 />
             </div>
 

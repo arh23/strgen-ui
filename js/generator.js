@@ -45,7 +45,7 @@ function initializeGenerator() {
 	    
 	    recordValue(pattern, generated_string, generator.generator_log);
 	} catch(error) {
-        displayError("Error! ", error.message);
+        displayNotification("Error! ", error.message);
         getErrors(generator);
 	    console.error(error.message);
 	    console.error(error.stack);
@@ -182,7 +182,7 @@ function resetPresetOptions(strgen = generator, count = 0) {
     }
 }
 
-function displayError(caption, message, fade = 5000, colour = 'var(--active-colour') {
+function displayNotification(caption, message, fade = 5000, colour = 'var(--active-colour)', textColour = 'white', border = 'thin solid var(--hover-colour)') {
     notification_count +=1;
 
     var notifElement = document.createElement("div");
@@ -190,7 +190,7 @@ function displayError(caption, message, fade = 5000, colour = 'var(--active-colo
 
     notifElement.setAttribute("id", notifId);
     notifElement.setAttribute("class", "notification");
-    notifElement.setAttribute("style", "display: none");
+    notifElement.setAttribute("style", "display: none;");
 
     document.getElementById("notification-area").appendChild(notifElement);
 
@@ -199,12 +199,15 @@ function displayError(caption, message, fade = 5000, colour = 'var(--active-colo
     var timer = null;
 
     if (timer) { 
-        window.clearTimeout(timer); timer = null;
+        window.clearTimeout(timer); 
+        timer = null;
     };
 
     $(notifId).stop(true, true);
 
+    $(notifId).css('border', border);
     $(notifId).css('background-color', colour);
+    $(notifId).css('color', textColour);
 
     if (message != undefined) {
         $(notifId).fadeIn("fast").append(message);
@@ -214,7 +217,9 @@ function displayError(caption, message, fade = 5000, colour = 'var(--active-colo
 
     $(notifId + " br:lt(1)").remove();
 
-    $(notifId).prepend("<b>" + caption + "</b><br />");
+    if (caption != undefined && caption != "") {
+        $(notifId).prepend("<b>" + caption + "</b><br />");
+    }
 
     timer = window.setTimeout(function() { 
         $(notifId).fadeOut("slow").qremove();    
@@ -225,9 +230,9 @@ function getErrors(generator) {
     if (generator.error_list != null) {
         for (error in generator.error_list) {
             if (generator.error_list[error].state == "warning") {
-                displayError("Warning! ", generator.error_list[error].msg, 15000, 'var(--warning-colour');
+                displayNotification("Warning! ", generator.error_list[error].msg, 15000, 'var(--warning-colour');
             } else if (generator.error_list[error].state == "error") {
-                displayError("Error! ", generator.error_list[error].msg, 5000, 'var(--active-colour');
+                displayNotification("Error! ", generator.error_list[error].msg, 5000, 'var(--active-colour');
             }
         }
     }
