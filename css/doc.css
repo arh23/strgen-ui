@@ -1,0 +1,61 @@
+/* ------------------------------------- */
+/* main doc page css */
+/* ------------------------------------- */
+
+.content_backlayer {
+    position: fixed;
+    z-index: -99;
+    min-height: 80%;
+    width: 60vw;
+    
+    margin: 0 auto; /*center*/
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    padding-top: 3px;
+    padding-bottom: 3px;
+    
+    max-height: 44vh;/*300px;/*1250px;*/
+    width: inherit;
+    overflow-x: hidden;
+}   
+
+.doc {
+    font-family: verdana;
+    font-size: 13px;
+}
+
+.doc div *{
+    text-align: justify;
+    margin: 0 auto;
+    width: 58vw;
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+}
+
+.doc div ul {
+    padding-left: 28px;
+}
+
+a {
+    color: var(--active-colour);
+}
+
+h1, h3, h4 {
+    letter-spacing: 0.75px;
+}
+
+.content_body p, .content_body li, .content h4, .history-header h4, .history_record p {
+    color: unset;
+    letter-spacing: unset;
+}
+
+hr {
+    color: black;
+    border-style: solid;
+    border-bottom: 0.25px;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    width: 60vw !important;
+}

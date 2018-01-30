@@ -1,0 +1,28 @@
+.toolbar {
+    border-bottom: thin solid;
+}
+
+.toolbar-button {
+    border-right: thin solid;
+    
+    display: inline-flex;     
+    justify-content: center;
+    align-items: center;
+    
+    float: left;
+    
+    /*make it so text in the button cannot be selected*/
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Mozilla Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+
+    cursor: pointer;
+    user-select: none;
+}
+
+#docs {
+    float: right;
+    border-right: initial;
+    border-left: thin solid;
+}
+

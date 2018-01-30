@@ -1,0 +1,200 @@
+.history, .config, .ref {
+    width: 60vw;
+    margin: 0 auto;
+    height: auto;
+}
+
+.history .history-header, .config .config-header, .ref .ref-header {
+    display: inline-block;
+    background-color: var(--element-colour);
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    border-bottom: thin solid #000000;
+  
+    display: none;     
+    justify-content: center;
+    align-items: center;
+    
+    width: 60vw;
+    height: 4vh; /*63.56px;*/
+    font-size: 16px;
+    font-weight: bold;
+    
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    /*make it so text in the button cannot be selected*/
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Mozilla Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+
+    cursor: default;
+    user-select: none;
+}
+
+.ref .ref-header {
+    display: flex
+}
+
+.history .history-list, .config .config-container, .ref .ref-container {
+    border-top: thin dotted #000000 0px;
+    border-bottom: thin solid #000000;
+    display: none;
+    word-wrap: break-word;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    
+    position: absolute;
+    /*max-height: 39vh;/*max-height: 44vh;*/
+    width: inherit;
+    overflow-x: hidden;
+    
+    font-size: 13px;
+}
+
+.history .history_list {
+    max-height: 40%;
+}
+
+.config .config-container .sub-container {
+    text-align: center;
+    grid-template-rows: auto;
+    grid-template-columns: 29vw 29vw;
+    grid-row-gap: 7px;
+    grid-column-gap: 2vw;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: grid;
+}
+
+.options-divider {
+    border-top: thin dotted #000000;
+    color: black;
+    border-bottom: 0.25px;
+    margin: 0 !important;
+}
+
+.config .config-container .config-section-header {
+    font-weight: bold;
+    padding-bottom: 2px;
+}
+
+.config .config-container .sub-container select {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.config .config-container .sub-container input[type="text"] {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.config .config-container .sub-container .preset-content { 
+    width: 75% !important;
+}
+
+.config .config-container .sub-container .options-label {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.reset-presets {
+    cursor: pointer;
+}
+
+.ref .ref-container {
+    display: block;
+    width: inherit;
+}
+
+.ref .ref-container .ref-content {
+    padding-left: 10px;
+    width: 58vw;
+    float: left;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-align: left;
+}
+
+.pattern-ex, .predefined-ex {
+    color: var(--hover-colour);
+}
+
+.pattern-ex:hover , .predefined-ex:hover {
+    color: var(--active-colour);
+    cursor: pointer;
+}
+
+.history-list .history_record {
+    margin: 0 auto;
+    width: 98%;
+    display: inline-block;
+    font-size: 12px;
+    text-align: left;
+    /*border-bottom: thin dashed;*/
+}
+
+.history_record .log_label {
+    width: 37vw;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float:left;
+
+    /*make it so text in the button cannot be selected*/
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Mozilla Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+
+    cursor: default;
+    user-select: none;
+}
+
+.history_record .log_bar:hover, .history_record .log_label:hover {
+    font-style: italic;
+    cursor: pointer;
+}
+
+.history_record .log_bar {
+    margin: 0px auto 0px auto;
+    min-height: 8px;
+    padding-top: 4px;
+    padding-bottom: 12px;
+}
+
+.history_record .log_export {
+    text-align: center;
+    float: right;
+    display: inline-block;
+    
+    white-space: nowrap;
+}
+
+.history_record .log_export a {
+    color: var(--active-colour);
+}
+
+.history_record p {
+    border: thin dotted #000000;
+    padding: 4px;
+    background-color: white;
+    color: black;
+    text-align: left;
+    max-height: 200px;
+    margin: 0px;
+    
+    overflow: auto;
+    white-space: pre-line;
+    font-family: consolas;
+    display: none;
+}
+
+.history-list:empty:before {
+    content: "Nothing here...";
+    color: darkgrey;
+    text-align: center;
+}

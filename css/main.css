@@ -1,0 +1,208 @@
+/* colour palette: http://paletton.com/#uid=62x1m0kd5emh-qXgokNcf9acf5r */
+:root {
+    --backlayer-background-colour: white;
+    --warning-colour: #b80000;
+    --hover-colour: #b80000;
+    --active-colour: #ff0505;
+    --element-colour: white;
+}
+
+@media  screen and (max-width: 1026px), screen and (max-height: 651px) {
+    h3.sub-text {
+        display: none;
+    }
+    
+    h1.title {
+        margin-top: -5px !important;
+        margin-bottom: 2px !important;
+        font-size: 2em !important;
+    }
+    
+    .inputwrap p {
+        font-size: 14px !important;
+        margin: 8px !important;
+    }
+    
+    section.main_area {
+        padding-bottom: 8px !important;
+    }
+        
+    body {
+        overflow-x: hidden !important;
+    }
+}
+
+h1.title {
+    font-size: 2.5em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    
+    /*make it so text in the button cannot be selected*/
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Mozilla Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+
+    cursor: default;
+    user-select: none;
+}
+
+span.highlight {
+    color: var(--hover-colour);
+}
+
+h3.sub-text {
+    font-size: 20px;
+    margin-top: 0px;
+}
+
+body {
+    background-attachment: fixed;
+    text-align: center;
+    font-family: verdana;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.backlayer {
+    position: fixed;
+    z-index: -100;
+    background-color: var(--backlayer-background-colour);
+    min-height: 100vh;
+    width: 60vw;
+    margin: 0 auto;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    border-left: solid 1px #b80000;
+    border-right: solid 1px #b80000;
+}
+
+.inputwrap {
+    padding-bottom: 10px;
+}
+
+.inputwrap input, textarea {
+    text-align: center;
+    font-family: verdana;
+    font-size: 16px;
+    width: 60%;
+    resize: none
+}
+
+.inputwrap #templatebox {
+    width: 65%;
+    padding: 1px;
+}
+
+.main_area {
+    width: 60vw;
+    border-top: thin solid #000000;
+    padding-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: thin solid #000000;
+}
+
+#custom_button {
+    margin: 0 auto;
+    width: 100px;
+    padding: 5px;
+
+    text-align: center;
+    border: thin solid #000000;
+
+    /*make it so text in the button cannot be selected*/
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Mozilla Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+
+    cursor: default;
+    user-select: none;
+    background-color: var(--element-colour);
+}
+
+#custom_button:hover, .toolbar-button:hover, .content:hover {
+    background-color: var(--hover-colour) !important;
+    color: white !important;
+}
+
+#custom_button:active, .toolbar-button:active, .content:active {
+    background-color: var(--active-colour) !important;
+    color: black !important;
+}
+
+/*tooltip source: https://www.w3schools.com/css/css_tooltip.asp*/
+
+.tooltip {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0; 
+    top: 65px;
+    left: -75%;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: -33%;
+    right: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+#notification-area {
+    position:fixed;
+    padding-left:13px;
+    padding-right:13px;
+    top:23px;
+    right: 1%;
+    width: 16vw;
+    height: 95%; 
+}
+
+.notification {
+    z-index:105;
+
+    padding-top:6px;
+    padding-bottom:6px;
+    padding-left:13px;
+    padding-right:13px;
+    
+    margin-left: 5px;
+    margin-top: 7px;
+    
+    min-width: 12vw;
+    max-width: 13vw;
+    cursor: pointer;
+    box-shadow: 5px 4px 2px silver;
+    word-wrap: break-word;
+    display: block;
+    
+    border-radius: 5px;
+}
