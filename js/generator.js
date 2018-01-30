@@ -252,13 +252,14 @@ function generateFromList(listString) {
 
     var quantifier = document.getElementById("listquantifier").value;
 
-    if (quantifier <= 10) {
-        var full_pattern = pattern.repeat(quantifier); 
-
-        document.getElementById("templatebox").value = full_pattern;
-        initializeGenerator();               
-    } else {
-        $('.notification').remove();
-        displayNotification("", "List quantifier cannot be over 10!", 10000, 'orange', 'black', "thin solid black");
+    if (quantifier > 1) {
+        var pattern = pattern + "{" + quantifier + "}";
     }
+
+    pattern = pattern.replace(/,\n/, "|");
+    //var full_pattern = pattern.repeat(quantifier); 
+
+    document.getElementById("templatebox").value = pattern;
+    initializeGenerator();               
+    
 }
