@@ -108,7 +108,7 @@ body {
     border-bottom: thin solid #000000;
 }
 
-#custom_button {
+#custom_button, #list_button {
     margin: 0 auto;
     width: 100px;
     padding: 5px;
@@ -126,12 +126,12 @@ body {
     background-color: var(--element-colour);
 }
 
-#custom_button:hover, .toolbar-button:hover, .content:hover {
+#custom_button:hover, #list_button:hover, .toolbar-button:hover, .content:hover {
     background-color: var(--hover-colour) !important;
     color: white !important;
 }
 
-#custom_button:active, .toolbar-button:active, .content:active {
+#custom_button:active, #list_button:active, .toolbar-button:active, .content:active {
     background-color: var(--active-colour) !important;
     color: black !important;
 }
@@ -146,14 +146,14 @@ body {
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 150px;
+    width: 170px;
     background-color: black;
     color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0; 
     top: 65px;
-    left: -75%;
+    left: -90%;
 
     /* Position the tooltip */
     position: absolute;

@@ -1,10 +1,10 @@
-.history, .config, .ref {
+.history, .config, .ref, .lists {
     width: 60vw;
     margin: 0 auto;
     height: auto;
 }
 
-.history .history-header, .config .config-header, .ref .ref-header {
+.history .history-header, .config .config-header, .ref .ref-header, .lists .list-header {
     display: inline-block;
     background-color: var(--element-colour);
     
@@ -38,7 +38,7 @@
     display: flex
 }
 
-.history .history-list, .config .config-container, .ref .ref-container {
+.history .history-list, .config .config-container, .ref .ref-container, .lists .list-container {
     border-top: thin dotted #000000 0px;
     border-bottom: thin solid #000000;
     display: none;
@@ -197,4 +197,21 @@
     content: "Nothing here...";
     color: darkgrey;
     text-align: center;
+}
+
+.lists .list-container p, .config .config-container p {
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-bottom: 2px;
+}
+
+.lists .list-container textarea {
+    display: block;
+    margin: 10px auto 4px auto;
+    width: 50vw;
+}
+
+.lists .list-container .list-quantifier {
+    margin: 0 auto 4px auto;
+    width: 30px;
 }

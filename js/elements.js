@@ -31,9 +31,7 @@ $(document).ready(function(){
     $("#logs").click(function(){
         if($("div.history-list").css("display") == "none") {
             state = "open";
-            if($("div.config-container").css("display") != "none") {
-                toggleOptions("close", "#options"); 
-            }
+            closeContainers();
             setTimeout(toggleLog("open", this), 2000);
         } else {
             state = "close";
@@ -46,9 +44,7 @@ $(document).ready(function(){
         var state = "";
         if($("div.config-container").css("display") == "none") {
             state = "open";
-            if($("div.history-list").css("display") != "none") {
-                toggleLog("close", "#logs"); 
-            }
+            closeContainers();
             setTimeout(toggleOptions("open", this), 2000);
         } else {
             state = "close";
@@ -56,6 +52,23 @@ $(document).ready(function(){
         }
         toggleRef(state);
     });
+
+    $("#list").click(function(){
+        var state = "";
+        if($("div.list-container").css("display") == "none") {
+            state = "open";
+            closeContainers();
+            setTimeout(toggleList("open", this), 2000);
+        } else {
+            state = "close";
+            toggleList("close", this);
+        }
+        toggleRef(state);
+    });    
+
+    $("#list_button").click(function(){
+        generateFromList(document.getElementById("listvalue").value);
+    });  
 
     $("form[name='regex_form']").on('submit', initializeGenerator);
 
@@ -177,6 +190,31 @@ $(document).ready(function(){
             $("div.history-header").delay(100).qtext("").qcss({display:'none'});
             $(element).css({backgroundColor:'white'}).css({color:'initial'});
             $(element).find("img").attr("src","img/log.svg");
+        }
+    }
+
+    function toggleList(state, element) {
+        if (state == "open") {
+            $(element).css({backgroundColor:bgColour}).css({color:'white'}).attr("src","img/doc-active.svg");
+            $(element).find("img").attr("src","img/log-active.svg");
+            $("div.list-header").delay(100).qcss({display:'flex'}).qcss({marginTop:'0px'}).qcss({width:'60vw'}).qcss({height:'4vh'}).qtext("Generate from list"); //height:'63.56px'
+            $("div.list-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
+            $("div.list-container").delay(110).slideToggle(100);        
+        } else if (state == "close") {
+            $("div.list-container").slideUp(100);
+            $("div.list-header").delay(100).qtext("").qcss({display:'none'});
+            $(element).css({backgroundColor:'white'}).css({color:'initial'});
+            $(element).find("img").attr("src","img/log.svg");
+        }
+    }
+
+    function closeContainers() {
+        if ($("div.history-list").css("display") != "none") {
+            toggleLog("close", "#logs"); 
+        } else if($("div.config-container").css("display") != "none") {
+            toggleOptions("close", "#options"); 
+        } else if ($("div.list-container").css("display") != "none") {
+            toggleList("close", "#list")
         }
     }
 

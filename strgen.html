@@ -44,6 +44,13 @@
         		<span class="tooltiptext">Documentation</span>
         	</div>
         </div>
+
+        <div class="toolbar-button" id="list">
+            <img src="img/doc.svg"></img>
+            <div class="tooltip">
+                <span class="tooltiptext">Generate from list</span>
+            </div>
+        </div>
     </div>
     <form name="regex_form" action="javascript:void(0);" accept-charset=utf-8>
         <!--form to contain the two textboxes and button-->
@@ -104,7 +111,7 @@
             <hr class="options-divider" />
 
             <div class="config-section-header">Preset options</div>
-            <div> See the documentation or reference for more information about the presets. </div>
+            <p style="margin-top: 2px;">See the documentation or reference for more information about the presets.</p>
             <div class="reset-presets"><span style="color:var(--active-colour)">Reset values.</span></div>
             <div class="sub-container preset-options"> 
                 <div><b>Preset</b></div>
@@ -118,11 +125,24 @@
         <div class="content-container history-list" id="historylist"></div>
     </section>
 
+    <section class="lists">
+        <div class="list-header" id="listheader">Generate from list</div>
+        <div class="content-container list-container">
+            <div class="list-content">
+                <p style="margin-top: 2px;">Enter values below (separated by commas, or comma and new line) to select from randomly.</p>
+                <textarea id="listvalue" class="list-value" rows="8" cols="110"></textarea>
+                <label class="options-label" for=listquantifier>Number of values to select <span style="color:var(--active-colour)">(maximum 10)</span>: </label>
+                <input type="text" class="list-quantifier" id="listquantifier" value=1 /> <br>
+                <button type="submit" id="list_button" class="gen_button">Generate</div>
+            </div>
+        </div>
+    </section>
+
     <section class="ref">
         <div class="ref-header" id="refheader">Reference</div>
         <div class="content-container ref-container">
             <div class="ref-content">
-                <p>Click on the example patterns below, or enter a pattern above, to generate a string.</p>
+                <p style="margin-top: 2px;">Click on the example patterns below, or enter a pattern above, to generate a string.</p>
 
                 <p>To generate a string containing 10 characters from "a" to "z":</p> 
                 <p><i><span class="pattern-ex">[a-z]{10}</span></i></p> 

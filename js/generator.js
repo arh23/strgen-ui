@@ -236,4 +236,29 @@ function getErrors(generator) {
             }
         }
     }
+};
+
+function generateFromList(listString) {
+    do 
+        if (listString.charAt(listString.length - 1) == ",") {
+            listString = listString.substr(0, listString.length - 1);
+        } else if (listString.charAt(listString.length - 1) == "\n") {
+            listString = listString.substr(0, listString.length - 1);
+        }
+    while (listString.charAt(listString.length - 1) == "\n" || listString.charAt(listString.length - 1) == ",")
+
+    var pattern = "(" + listString.replace(/,/g, "|") + ")";
+    pattern = pattern.replace(/,\n/, "|");
+
+    var quantifier = document.getElementById("listquantifier").value;
+
+    if (quantifier <= 10) {
+        var full_pattern = pattern.repeat(quantifier); 
+
+        document.getElementById("templatebox").value = full_pattern;
+        initializeGenerator();               
+    } else {
+        $('.notification').remove();
+        displayNotification("", "List quantifier cannot be over 10!", 10000, 'orange', 'black', "thin solid black");
+    }
 }
