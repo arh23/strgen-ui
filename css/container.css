@@ -209,9 +209,16 @@
     display: block;
     margin: 10px auto 4px auto;
     width: 50vw;
+    text-align: left;
+    padding: 4px;
 }
 
 .lists .list-container .list-quantifier {
     margin: 0 auto 4px auto;
     width: 30px;
+}
+
+.lists .list-container .list-separator {
+    margin: 0 auto 4px auto;
+    width: 40px;
 }

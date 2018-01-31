@@ -239,6 +239,9 @@ function getErrors(generator) {
 };
 
 function generateFromList(listString) {
+    var separator = document.getElementById("listseparator").value;
+    var pattern, original_pattern;
+    var operator = "[]{}()-\\|/+*?"
     do 
         if (listString.charAt(listString.length - 1) == ",") {
             listString = listString.substr(0, listString.length - 1);
@@ -247,17 +250,41 @@ function generateFromList(listString) {
         }
     while (listString.charAt(listString.length - 1) == "\n" || listString.charAt(listString.length - 1) == ",")
 
-    var pattern = "(" + listString.replace(/,/g, "|") + ")";
-    pattern = pattern.replace(/,\n/, "|");
+    if (separator != "") {
+        original_pattern = "(" + listString + ")";
+        original_pattern = original_pattern.replace(/,/g, "|");
+        original_pattern = original_pattern.replace(/,\n/, "|");
+
+        var count = 0;
+
+        do {
+            console.log(count + " " + separator.charAt(count));
+            console.log(operator.includes(separator.charAt(count)))
+            if (operator.includes(separator.charAt(count))) {
+                separator = separator.substr(0, count) + "/" + separator.substr(count);
+                count += 1;
+            }
+            count += 1;
+        } while (count < separator.length)
+
+        pattern = "(" + listString + separator + ")"; // process pattern and add separator at end
+        pattern = pattern.replace(/,/g, separator + "|"); // replace commas
+        pattern = pattern.replace(/,\n/, separator + "|"); // replace commas and new lines
+    } else {
+        pattern = "(" + listString.replace(/,/g, "|") + ")"; // process pattern
+        pattern = pattern.replace(/,/g, "|"); // replace commas
+        pattern = pattern.replace(/,\n/, "|"); // replace commas and new lines
+    }
 
     var quantifier = document.getElementById("listquantifier").value;
 
     if (quantifier > 1) {
-        var pattern = pattern + "{" + quantifier + "}";
+        if (separator != "") {
+            pattern = pattern + "{" + (quantifier - 1) + "}" + original_pattern;
+        } else {
+            pattern = pattern + "{" + quantifier + "}";
+        }
     }
-
-    pattern = pattern.replace(/,\n/, "|");
-    //var full_pattern = pattern.repeat(quantifier); 
 
     document.getElementById("templatebox").value = pattern;
     initializeGenerator();               
