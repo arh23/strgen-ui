@@ -267,9 +267,9 @@ function generateFromList(listString) {
             count += 1;
         } while (count < separator.length)
 
-        pattern = "(" + listString + separator + ")"; // process pattern and add separator at end
+        pattern = "(" + listString; // process pattern and add separator at end
         pattern = pattern.replace(/,/g, separator + "|"); // replace commas
-        pattern = pattern.replace(/,\n/, separator + "|"); // replace commas and new lines
+        pattern = pattern.replace(/,\n/, separator + "|") + separator + ")"; // replace commas and new lines, add separator and closing bracket
     } else {
         pattern = "(" + listString.replace(/,/g, "|") + ")"; // process pattern
         pattern = pattern.replace(/,/g, "|"); // replace commas
