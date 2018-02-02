@@ -133,12 +133,12 @@ $(document).ready(function(){
     $(document).on("click", ".reset-presets", function() {
         resetPresetOptions();
         $('.notification').remove();
-        displayNotification("", "Preset options have been reset!", 10000, 'orange', 'black', "thin solid black");
+        displayNotification("", "Preset options have been reset!", "strgen-ui", 10000, 'orange', 'black', "thin solid", "black");
     });
 
     $(document).on("click", ".log_export", function() {
         $('.notification').remove();
-        displayNotification("", "Log exported!", 10000, 'orange', 'black', "thin solid black");
+        displayNotification("", "Log exported!", "strgen-ui", 10000, 'orange', 'black', "thin solid", "black");
     });
 
             

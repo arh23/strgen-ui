@@ -205,4 +205,14 @@ body {
     display: block;
     
     border-radius: 5px;
+    
+    overflow: hidden;
+}
+
+.notification hr {
+    color: black;
+    width: 150%;
+    min-width: 105px;
+    margin-left: -14px;
+    border-bottom: 0px;
 }

@@ -45,7 +45,7 @@ function initializeGenerator() {
 	    
 	    recordValue(pattern, generated_string, generator.generator_log);
 	} catch(error) {
-        displayNotification("Error! ", error.message);
+        displayNotification("Error! ", error.message, "strgen-js");
         getErrors(generator);
 	    console.error(error.message);
 	    console.error(error.stack);
@@ -182,7 +182,8 @@ function resetPresetOptions(strgen = generator, count = 0) {
     }
 }
 
-function displayNotification(caption, message, fade = 5000, colour = 'var(--active-colour)', textColour = 'white', border = 'thin solid var(--hover-colour)') {
+function displayNotification(caption, message, component = "strgen", fade = 5000, colour = 'var(--active-colour)', 
+    text_colour = 'white', border = 'thin solid', border_colour = 'var(--hover-colour)', ) {
     notification_count +=1;
 
     var notifElement = document.createElement("div");
@@ -191,6 +192,7 @@ function displayNotification(caption, message, fade = 5000, colour = 'var(--acti
     notifElement.setAttribute("id", notifId);
     notifElement.setAttribute("class", "notification");
     notifElement.setAttribute("style", "display: none;");
+
 
     document.getElementById("notification-area").appendChild(notifElement);
 
@@ -206,8 +208,9 @@ function displayNotification(caption, message, fade = 5000, colour = 'var(--acti
     $(notifId).stop(true, true);
 
     $(notifId).css('border', border);
+    $(notifId).css('border-color', border_colour);
     $(notifId).css('background-color', colour);
-    $(notifId).css('color', textColour);
+    $(notifId).css('color', text_colour);
 
     if (message != undefined) {
         $(notifId).fadeIn("fast").append(message);
@@ -221,6 +224,8 @@ function displayNotification(caption, message, fade = 5000, colour = 'var(--acti
         $(notifId).prepend("<b>" + caption + "</b><br />");
     }
 
+    $(notifId).prepend("<i>" + component + "</i><br /><hr style='color:" + border_colour + "'>");
+
     timer = window.setTimeout(function() { 
         $(notifId).fadeOut("slow").qremove();    
     }, fade);
@@ -230,9 +235,9 @@ function getErrors(generator) {
     if (generator.error_list != null) {
         for (error in generator.error_list) {
             if (generator.error_list[error].state == "warning") {
-                displayNotification("Warning! ", generator.error_list[error].msg, 15000, 'var(--warning-colour');
+                displayNotification("Warning! ", generator.error_list[error].msg, "strgen-js", 15000, 'var(--warning-colour');
             } else if (generator.error_list[error].state == "error") {
-                displayNotification("Error! ", generator.error_list[error].msg, 5000, 'var(--active-colour');
+                displayNotification("Error! ", generator.error_list[error].msg, "strgen-js");
             }
         }
     }
@@ -250,16 +255,14 @@ function generateFromList(listString) {
         }
     while (listString.charAt(listString.length - 1) == "\n" || listString.charAt(listString.length - 1) == ",")
 
-    if (separator != "") {
-        original_pattern = "(" + listString + ")";
-        original_pattern = original_pattern.replace(/,/g, "|");
-        original_pattern = original_pattern.replace(/,\n/, "|");
+    original_pattern = "(" + listString + ")";
+    original_pattern = original_pattern.replace(/,/g, "|");
+    original_pattern = original_pattern.replace(/,\n/, "|");
 
+    if (separator != "") {
         var count = 0;
 
         do {
-            console.log(count + " " + separator.charAt(count));
-            console.log(operator.includes(separator.charAt(count)))
             if (operator.includes(separator.charAt(count))) {
                 separator = separator.substr(0, count) + "/" + separator.substr(count);
                 count += 1;
@@ -278,15 +281,16 @@ function generateFromList(listString) {
 
     var quantifier = document.getElementById("listquantifier").value;
 
-    if (quantifier > 1) {
-        if (separator != "") {
-            pattern = pattern + "{" + (quantifier - 1) + "}" + original_pattern;
-        } else {
-            pattern = pattern + "{" + quantifier + "}";
-        }
+    if (separator != "" && quantifier >= 2) {
+        pattern = pattern + "{" + (quantifier - 1) + "}" + original_pattern;
+    } else if (separator != "" && quantifier == 1) {
+        pattern = original_pattern;
+    } else if (quantifier == 0 || quantifier == undefined) {
+        pattern = original_pattern;
+    } else {
+        pattern = pattern + "{" + quantifier + "}";
     }
 
     document.getElementById("templatebox").value = pattern;
-    initializeGenerator();               
-    
+    initializeGenerator();
 }
