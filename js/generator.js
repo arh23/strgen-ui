@@ -247,50 +247,69 @@ function generateFromList(listString) {
     var separator = document.getElementById("listseparator").value;
     var pattern, original_pattern;
     var operator = "[]{}()-\\|/+*?"
-    do 
-        if (listString.charAt(listString.length - 1) == ",") {
-            listString = listString.substr(0, listString.length - 1);
-        } else if (listString.charAt(listString.length - 1) == "\n") {
-            listString = listString.substr(0, listString.length - 1);
-        }
-    while (listString.charAt(listString.length - 1) == "\n" || listString.charAt(listString.length - 1) == ",")
 
-    original_pattern = "(" + listString + ")";
-    original_pattern = original_pattern.replace(/,/g, "|");
-    original_pattern = original_pattern.replace(/,\n/, "|");
-
-    if (separator != "") {
-        var count = 0;
-
-        do {
-            if (operator.includes(separator.charAt(count))) {
-                separator = separator.substr(0, count) + "/" + separator.substr(count);
-                count += 1;
+    if (listString == "") {
+        $('.notification').remove();
+        displayNotification("Warning! ", "No values to select from!", "strgen-ui", 15000, 'var(--warning-colour');
+    } else {
+        do 
+            if (listString.charAt(listString.length - 1) == ",") {
+                listString = listString.substr(0, listString.length - 1);
+            } else if (listString.charAt(listString.length - 1) == "\n") {
+                listString = listString.substr(0, listString.length - 1);
             }
-            count += 1;
-        } while (count < separator.length)
+        while (listString.charAt(listString.length - 1) == "\n" || listString.charAt(listString.length - 1) == ",")
 
-        pattern = "(" + listString; // process pattern and add separator at end
-        pattern = pattern.replace(/,/g, separator + "|"); // replace commas
-        pattern = pattern.replace(/,\n/, separator + "|") + separator + ")"; // replace commas and new lines, add separator and closing bracket
-    } else {
-        pattern = "(" + listString.replace(/,/g, "|") + ")"; // process pattern
-        pattern = pattern.replace(/,/g, "|"); // replace commas
-        pattern = pattern.replace(/,\n/, "|"); // replace commas and new lines
+        original_pattern = "(" + listString + ")";
+        original_pattern = original_pattern.replace(/,/g, "|");
+        original_pattern = original_pattern.replace(/,\n/, "|");
+
+        if (separator != "") {
+            var count = 0;
+
+            do {
+                if (operator.includes(separator.charAt(count))) {
+                    separator = separator.substr(0, count) + "/" + separator.substr(count);
+                    count += 1;
+                }
+                count += 1;
+            } while (count < separator.length)
+
+            pattern = "(" + listString; // process pattern and add separator at end
+            pattern = pattern.replace(/,/g, separator + "|"); // replace commas
+            pattern = pattern.replace(/,\n/, separator + "|") + separator + ")"; // replace commas and new lines, add separator and closing bracket
+        } else {
+            pattern = "(" + listString.replace(/,/g, "|") + ")"; // process pattern
+            pattern = pattern.replace(/,/g, "|"); // replace commas
+            pattern = pattern.replace(/,\n/, "|"); // replace commas and new lines
+        }
+
+        var quantifier = document.getElementById("listquantifier").value;
+        var individual_sequence = document.getElementById("toggleunique").checked;
+
+
+        if (quantifier == 0 || quantifier == undefined) {
+            $('.notification').remove();
+            displayNotification("Warning! ", "Number of values to select cannot be 0! Setting to 1.", "strgen-ui", 15000, 'var(--warning-colour');
+            quantifier = 1;
+        }
+
+        if (separator != "" && quantifier >= 2 && individual_sequence == false) {
+            pattern = pattern + "{" + (quantifier - 1) + "}" + original_pattern;
+        } else if (quantifier == 1 && individual_sequence == false) {
+            pattern = original_pattern;
+        } else if (individual_sequence) {
+            if (separator != "") {
+                pattern = pattern.repeat(quantifier - 1) + original_pattern;
+            } else {
+                pattern = pattern.repeat(quantifier);
+            }
+            
+        } else {
+            pattern = pattern + "{" + quantifier + "}";
+        }
+
+        document.getElementById("templatebox").value = pattern;
+        initializeGenerator();
     }
-
-    var quantifier = document.getElementById("listquantifier").value;
-
-    if (separator != "" && quantifier >= 2) {
-        pattern = pattern + "{" + (quantifier - 1) + "}" + original_pattern;
-    } else if (separator != "" && quantifier == 1) {
-        pattern = original_pattern;
-    } else if (quantifier == 0 || quantifier == undefined) {
-        pattern = original_pattern;
-    } else {
-        pattern = pattern + "{" + quantifier + "}";
-    }
-
-    document.getElementById("templatebox").value = pattern;
-    initializeGenerator();
 }
