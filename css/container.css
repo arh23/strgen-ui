@@ -58,7 +58,7 @@
     max-height: 40%;
 }
 
-.config .config-container .sub-container {
+.config .config-container .sub-container, .lists .list-container .sub-container {
     text-align: center;
     grid-template-rows: auto;
     grid-template-columns: 29vw 29vw;
@@ -87,7 +87,8 @@
     margin: 0 auto;
 }
 
-.config .config-container .sub-container input[type="text"] {
+.config .config-container .sub-container input[type="text"],
+.lists .list-container .sub-container input[type="text"]{
     width: 40%;
     margin: 0 auto;
     text-align: center;

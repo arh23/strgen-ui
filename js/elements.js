@@ -101,7 +101,6 @@ $(document).ready(function(){
             pattern += "[]"
         }
 
-        console.log(range);
         pattern = pattern.replace("]", range + "]");
 
         document.getElementById("templatebox").value = pattern;
@@ -116,7 +115,6 @@ $(document).ready(function(){
             $("#multipleduplicates").prop("checked", true);
             $("#caseduplicates").prop("disabled", true);
             $("#caseduplicates").prop("checked", false);
-
         }
     });
 
@@ -127,6 +125,15 @@ $(document).ready(function(){
         else if ($(this).is(":checked") == true) {
             $("#caseduplicates").prop("disabled", true);
             $("#caseduplicates").prop("checked", false);
+        }
+    });
+
+    $("#togglepattern").change(function(){
+        if ($(this).is(":checked") == false) {
+            $("#pattern_wrap").css({display:'none'});
+        }
+        else if ($(this).is(":checked") == true) {
+            $("#pattern_wrap").css({display:'block'});
         }
     });
 
@@ -199,12 +206,17 @@ $(document).ready(function(){
             $(element).find("img").attr("src","img/log-active.svg");
             $("div.list-header").delay(100).qcss({display:'flex'}).qcss({marginTop:'0px'}).qcss({width:'60vw'}).qcss({height:'4vh'}).qtext("Generate from list"); //height:'63.56px'
             $("div.list-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
-            $("div.list-container").delay(110).slideToggle(100);        
+            $("div.list-container").delay(110).slideToggle(100);
+            $("#custom_button").qcss({display:'none'});
+            $("#pattern_wrap").qcss({display:'none'});
         } else if (state == "close") {
             $("div.list-container").slideUp(100);
             $("div.list-header").delay(100).qtext("").qcss({display:'none'});
             $(element).css({backgroundColor:'white'}).css({color:'initial'});
             $(element).find("img").attr("src","img/log.svg");
+            $("#custom_button").qcss({display:'inline-block'});
+            $("#pattern_wrap").qcss({display:'block'});
+            $("#togglepattern").prop("checked", false);
         }
     }
 
@@ -214,7 +226,7 @@ $(document).ready(function(){
         } else if($("div.config-container").css("display") != "none") {
             toggleOptions("close", "#options"); 
         } else if ($("div.list-container").css("display") != "none") {
-            toggleList("close", "#list")
+            toggleList("close", "#list");
         }
     }
 

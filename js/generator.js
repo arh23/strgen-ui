@@ -169,7 +169,7 @@ function createPresetOptions(strgen = generator, count = 0) {
         parent.appendChild(presetInput);
         count += 1;
 
-        this.createPresetOptions(strgen, count)
+        this.createPresetOptions(strgen, count);
     }
 }
 

@@ -54,7 +54,7 @@
     </div>
     <form name="regex_form" action="javascript:void(0);" accept-charset=utf-8>
         <!--form to contain the two textboxes and button-->
-        <div class="inputwrap">
+        <div class="inputwrap" id="pattern_wrap">
             <p>Pattern:</p>
             <input type="text" id="templatebox" value=""><br>
         </div>
@@ -97,7 +97,7 @@
                 </select>
 
                 <label class="options-label" for="printlog">Print log to console <span style="color:var(--active-colour)">(can affect performance)</span></label>
-                <input type="checkbox" class="config-control input-checkbox enable_logging" id="printlog" checked/>
+                <input type="checkbox" class="config-control input-checkbox enable_logging" id="printlog"/>
             </div>
 
             <hr class="options-divider" />
@@ -131,15 +131,22 @@
             <div class="list-content">
                 <p style="margin-top: 2px;">Enter values below (separated by commas, or comma and new line) to select from randomly.</p>
                 <textarea id="listvalue" class="list-value" rows="8" cols="110"></textarea>
-                <label class="options-label" for=listquantifier>Number of values to select<span id="listwarning" style="color:var(--active-colour);display:none"> (maximum 10)</span>: </label>
-                <input type="text" class="list-quantifier" id="listquantifier" value=1 />
 
-                <label class="options-label" for="toggleunique">Use individual sequences</label>
-                <input type="checkbox" class="toggle_unique" id="toggleunique" />
+                <div class="sub-container list-options">
+                    <label class="options-label" for=listquantifier>Number of values to select: </label>
+                    <input type="text" class="list-quantifier" id="listquantifier" value=1 />
 
-                <br><label class="options-label" for=listseparator>Separator: </label>
-                <input type="text" class="list-separator" id="listseparator" />
-                <br> <button type="submit" id="list_button" class="gen_button">Generate</div>
+                    <label class="options-label" for=listseparator>Separator: </label>
+                    <input type="text" class="list-separator" id="listseparator" />
+
+                    <label class="options-label" for="toggleunique">Use individual sequences</label>
+                    <input type="checkbox" class="toggle_unique" id="toggleunique" />
+
+                    <label class="options-label" for="togglepattern">View pattern</label>
+                    <input type="checkbox" class="toggle_pattern" id="togglepattern" />
+                </div>
+
+                <button type="submit" id="list_button" class="gen_button">Generate</div>
             </div>
         </div>
     </section>
