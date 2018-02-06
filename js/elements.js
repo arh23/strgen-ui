@@ -203,7 +203,7 @@ $(document).ready(function(){
     function toggleList(state, element) {
         if (state == "open") {
             $(element).css({backgroundColor:bgColour}).css({color:'white'}).attr("src","img/doc-active.svg");
-            $(element).find("img").attr("src","img/log-active.svg");
+            $(element).find("img").attr("src","img/list-active.svg");
             $("div.list-header").delay(100).qcss({display:'flex'}).qcss({marginTop:'0px'}).qcss({width:'60vw'}).qcss({height:'4vh'}).qtext("Generate from list"); //height:'63.56px'
             $("div.list-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
             $("div.list-container").delay(110).slideToggle(100);
@@ -213,7 +213,7 @@ $(document).ready(function(){
             $("div.list-container").slideUp(100);
             $("div.list-header").delay(100).qtext("").qcss({display:'none'});
             $(element).css({backgroundColor:'white'}).css({color:'initial'});
-            $(element).find("img").attr("src","img/log.svg");
+            $(element).find("img").attr("src","img/list.svg");
             $("#custom_button").qcss({display:'inline-block'});
             $("#pattern_wrap").qcss({display:'block'});
             $("#togglepattern").prop("checked", false);
