@@ -113,12 +113,13 @@
 }
 
 .ref .ref-container .ref-content {
-    padding-left: 10px;
-    width: 58vw;
+    margin-left: 10px;
+    width: 54.4vw;
     float: left;
     word-wrap: break-word;
     hyphens: auto;
     text-align: left;
+    margin-right: 15px;
 }
 
 .pattern-ex, .predefined-ex {
@@ -212,6 +213,7 @@
     width: 50vw;
     text-align: left;
     padding: 4px;
+    height: 22vh;
 }
 
 .lists .list-container .list-quantifier {

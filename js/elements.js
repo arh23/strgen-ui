@@ -258,12 +258,15 @@ $(document).ready(function(){
         var window_width = $(window.top).width();
 
         if(window_width < 1026 | window_height < 651) {
-            var new_height = Math.floor((window_height - 353) - (window_height / 50)) + "px";            
+            var new_height = Math.floor((window_height - 353) - (window_height / 50)) + "px";
+            var list_new_height = Math.floor((window_height - 353) - (window_height / 50)) + 28 + "px";
         } else {
             var new_height = Math.floor((window_height - 353) - (window_height / 7)) + "px";
+            var list_new_height = Math.floor((window_height - 353) - (window_height / 7)) + 28 + "px";
         }
 
         $("div.content-container").css({maxHeight:new_height});
+        $("div.content-container.list-container").css({maxHeight:list_new_height});
 
         if(window_width < 1026 | window_height < 651) {
             var new_size = Math.floor(10 + (window_width / 9));

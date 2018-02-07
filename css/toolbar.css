@@ -26,3 +26,9 @@
     border-left: thin solid;
 }
 
+#list img {
+    height: 15vh;
+    width: 15vw;
+    max-width:50px;
+    max-height:50px;
+}
