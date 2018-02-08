@@ -22,48 +22,48 @@
     <div id="notification-area"></div>
 
     <section class="main_area">
-    <div class="toolbar">
-        <div class="toolbar-button" id="logs">
-        	<img src="img/log.svg"></img>
-        	<div class="tooltip">
-        		<span class="tooltiptext">Logs</span>
-        	</div>
-        </div>
+        <div class="toolbar">
+            <div class="toolbar-button" id="logs">
+            	<img src="img/log.svg"></img>
+            	<div class="tooltip">
+            		<span class="tooltiptext">Logs</span>
+            	</div>
+            </div>
 
-        <div class="toolbar-button" id="list">
-            <img src="img/list.svg"></img>
-            <div class="tooltip">
-                <span class="tooltiptext">Generate from list</span>
+            <div class="toolbar-button" id="list">
+                <img src="img/list.svg"></img>
+                <div class="tooltip">
+                    <span class="tooltiptext">Generate from list</span>
+                </div>
+            </div>
+            
+            <div class="toolbar-button" id="options">
+            	<img src="img/options.svg"></img>
+            	<div class="tooltip">
+            		<span class="tooltiptext">Options</span>
+            	</div>
+            </div>
+
+            <div class="toolbar-button" id="docs">
+            	<img src="img/doc.svg"></img>
+            	<div class="tooltip">
+            		<span class="tooltiptext">Documentation</span>
+            	</div>
             </div>
         </div>
-        
-        <div class="toolbar-button" id="options">
-        	<img src="img/options.svg"></img>
-        	<div class="tooltip">
-        		<span class="tooltiptext">Options</span>
-        	</div>
-        </div>
+        <form name="regex_form" action="javascript:void(0);" accept-charset=utf-8>
+            <!--form to contain the two textboxes and button-->
+            <div class="inputwrap" id="pattern_wrap">
+                <p>Pattern:</p>
+                <input type="text" id="templatebox" value=""><br>
+            </div>
 
-        <div class="toolbar-button" id="docs">
-        	<img src="img/doc.svg"></img>
-        	<div class="tooltip">
-        		<span class="tooltiptext">Documentation</span>
-        	</div>
-        </div>
-    </div>
-    <form name="regex_form" action="javascript:void(0);" accept-charset=utf-8>
-        <!--form to contain the two textboxes and button-->
-        <div class="inputwrap" id="pattern_wrap">
-            <p>Pattern:</p>
-            <input type="text" id="templatebox" value=""><br>
-        </div>
-
-        <div class="inputwrap">
-            <button type="submit" id="custom_button" class="gen_button">Generate</div>
+            <div class="inputwrap" id="button_wrap">
+                <button type="submit" id="custom_button" class="gen_button">Generate</button>
+            </div>
 
             <textarea id="stringvalue" rows="3" cols="75" readonly></textarea>
-        </div>
-    </form>
+        </form>
     </section>
 
     <section class="config">

@@ -207,14 +207,14 @@ $(document).ready(function(){
             $("div.list-header").delay(100).qcss({display:'flex'}).qcss({marginTop:'0px'}).qcss({width:'60vw'}).qcss({height:'4vh'}).qtext("Generate from list"); //height:'63.56px'
             $("div.list-header").css({fontWeight:'bold'}).css({fontSize:'16px'}).css({border:'none'}).css({borderBottom:'thin solid #000000'}); //fontSize:'16px'
             $("div.list-container").delay(110).slideToggle(100);
-            $("#custom_button").qcss({display:'none'});
+            $("#button_wrap").qcss({display:'none'});
             $("#pattern_wrap").qcss({display:'none'});
         } else if (state == "close") {
             $("div.list-container").slideUp(100);
             $("div.list-header").delay(100).qtext("").qcss({display:'none'});
             $(element).css({backgroundColor:'white'}).css({color:'initial'});
             $(element).find("img").attr("src","img/list.svg");
-            $("#custom_button").qcss({display:'inline-block'});
+            $("#button_wrap").qcss({display:'block'});
             $("#pattern_wrap").qcss({display:'block'});
             $("#togglepattern").prop("checked", false);
         }
@@ -259,10 +259,10 @@ $(document).ready(function(){
 
         if(window_width < 1026 | window_height < 651) {
             var new_height = Math.floor((window_height - 353) - (window_height / 50)) + "px";
-            var list_new_height = Math.floor((window_height - 353) - (window_height / 50)) + 28 + "px";
+            var list_new_height = Math.floor((window_height - 353) - (window_height / 50)) + 45 + "px";
         } else {
             var new_height = Math.floor((window_height - 353) - (window_height / 7)) + "px";
-            var list_new_height = Math.floor((window_height - 353) - (window_height / 7)) + 28 + "px";
+            var list_new_height = Math.floor((window_height - 353) - (window_height / 7)) + 45 + "px";
         }
 
         $("div.content-container").css({maxHeight:new_height});
