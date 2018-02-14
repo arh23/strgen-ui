@@ -1,0 +1,82 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "strgen@git+https://github.com/arh23/strgen-js.git",
+        "scope": null,
+        "escapedName": "strgen",
+        "name": "strgen",
+        "rawSpec": "git+https://github.com/arh23/strgen-js.git",
+        "spec": "git+https://github.com/arh23/strgen-js.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:arh23/strgen-js.git",
+          "sshUrl": "git+ssh://git@github.com/arh23/strgen-js.git",
+          "httpsUrl": "git+https://github.com/arh23/strgen-js.git",
+          "gitUrl": "git://github.com/arh23/strgen-js.git",
+          "shortcut": "github:arh23/strgen-js",
+          "directUrl": "https://raw.githubusercontent.com/arh23/strgen-js/master/package.json"
+        }
+      },
+      "/Users/andrewhayton/Documents/Javascript/strgen-ui"
+    ]
+  ],
+  "_from": "git+https://github.com/arh23/strgen-js.git",
+  "_id": "strgen-js@0.1.0",
+  "_inCache": true,
+  "_location": "/strgen-js",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "strgen@git+https://github.com/arh23/strgen-js.git",
+    "scope": null,
+    "escapedName": "strgen",
+    "name": "strgen",
+    "rawSpec": "git+https://github.com/arh23/strgen-js.git",
+    "spec": "git+https://github.com/arh23/strgen-js.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:arh23/strgen-js.git",
+      "sshUrl": "git+ssh://git@github.com/arh23/strgen-js.git",
+      "httpsUrl": "git+https://github.com/arh23/strgen-js.git",
+      "gitUrl": "git://github.com/arh23/strgen-js.git",
+      "shortcut": "github:arh23/strgen-js",
+      "directUrl": "https://raw.githubusercontent.com/arh23/strgen-js/master/package.json"
+    }
+  },
+  "_requiredBy": [],
+  "_resolved": "git+https://github.com/arh23/strgen-js.git#e649dff6772ed95a2e27927a320bfb7c9125f0a9",
+  "_shasum": "1cabcc8d2eb5fc8d963476d8541476ffc1414b5f",
+  "_shrinkwrap": null,
+  "_spec": "strgen@git+https://github.com/arh23/strgen-js.git",
+  "_where": "/Users/andrewhayton/Documents/Javascript/strgen-ui",
+  "author": {
+    "name": "arh23"
+  },
+  "bugs": {
+    "url": "https://github.com/arh23/strgen-js/issues"
+  },
+  "dependencies": {},
+  "description": "Generate random strings using patterns based on regular expression",
+  "devDependencies": {},
+  "gitHead": "e649dff6772ed95a2e27927a320bfb7c9125f0a9",
+  "homepage": "https://github.com/arh23/strgen-js",
+  "keywords": [
+    "generator",
+    "javascript",
+    "regex",
+    "string",
+    "string-generator"
+  ],
+  "main": "strgen.js",
+  "name": "strgen-js",
+  "optionalDependencies": {},
+  "readme": "# strgen-js\n\nGenerate random strings using a pattern system based on regular expressions.\n\nDeveloped alongside the UI project, [strgen-ui](https://github.com/arh23/strgen-ui).\n\nCredits go to:\n- **Paul Wolf** for help with this project, and provision of the [original Python implementation](https://github.com/paul-wolf/strgen).\n\n## Tests\n\n[![Build Status](https://travis-ci.org/arh23/strgen-js.svg?branch=node-branch)](https://travis-ci.org/arh23/strgen-js)\n\nView the QUnitJS tests [here](https://arh23.github.io/strgen-js/tests/tests.html).\n\n## Documentation\n\nThis documentation will guide you through the different operators and functionality of the pattern system.\n\n### Usage\n\nStrgen can be used as an external script, or with the UI packaged with this repo.\n\nWhen using Strgen in existing code, a new object instance will need to be created, and a pattern assigned to the class variable (optionally, parameter variables can also be set). Then, the createString() method will be called. See below:\n\n~~~~\nvar example_pattern = \"[a-z]{10}\";\nvar stringGenerator = new Strgen();\n\n// required parameter\nstringGenerator.pattern = example_pattern; \n\n// optional parameters\nstringGenerator.allow_duplicate_characters = false; \nstringGenerator.allow_multiple_instances = true;\nstringGenerator.ignore_duplicate_case = false;\nstringGenerator.allow_logging = false;\nstringGenerator.reporting_type = \"less\";\nstringGenerator.print_to_console = false;\nstringGenerator.error_output_id = \"error\";\nstringGenerator.store_errors = true;\nstringGenerator.symbol_quantifier_max = 25;\n\nvar generated_string = stringGenerator.createString();\n~~~~\n\nThis will create a random string based on the pattern provided. \n\nThere are multiple parameters/variables which affect the way in which Strgen handles string generation:\n\n- *pattern* - required - the regex-styled pattern string required to generate the random string.\n\n- *allow_duplicate_characters* - optional - boolean to specify if Strgen should use the same character twice (or more) in a range/set of characters. *True* by default.\n\n- *allow_multiple_instances* - optional - boolean to specify if Strgen should generate a string with multiple instances of a character, IF the character has been specified multiple times in the pattern. For example, if character \"A\" has been selected, all instances of \"A\" will be removed from the values list, if this parameter has been set to *false*. *True* by default. Requires *allow_duplicate_characters* to be false.\n\n- *ignore_duplicate_case* - optional - boolean to specify if Strgen should ignore case, when multiple instances are not allowed. For example, if character \"A\" has been selected, all instances of \"A\" and \"a\" will be removed from the values list, if this parameter has been set to *true*. *False* by default. Requires *allow_multiple_characters* to be false.\n\n- *allow_logging* - optional - boolean to specify whether every significant action during the generation process should be logged or not. *False* by default. Has the potential to cause performance issues. The log is accessible via the browser console, or can be accessed directly from the Strgen object. For example, using the example object defined above, you will be able to access the logs using: *stringGenerator.generator_log*.\n\n- *reporting_type* - optional - string to specify the level of detail the messages posted before and after string generation. To show the pattern at the start, and the final string generated at the end of generation, use \"full\". To show a message stating when generation has started and finished, use \"less\". To show nothing, use \"none\". Any invalid values assigned to this parameter will be set to the \"none\" state. If *allow_logging* has been set to *true*, this will be set to full. Set to *full* by default.\n\n- *print_to_console* - optional - boolean to specify if the log and other output should be printed to the console after generation. Setting this to *false* will prevent printing to the console (except for situations where an error has occurred, or if no valid warning element has been specified for *error_output_id* AND *store_errors* is *false*). *True* by default.\n\n- *error_output_id* - optional - string to reference the ID of the element where warning and error messages should be printed on a UI. Uses element ID *warning* by default.\n\n- *store_errors* - optional - boolean to specify whether all errors and warnings should be stored in a list of objects or not. Each object in the list will contain two properties, *msg* and *state*. *msg* is the string to describe what the error/warning is, *state* is either \"error\" or \"warning\". *False* by default.\n\n- *symbol_quantifier_max* - optional - number to specify the maximum value a symbol quantifier can generate. *10* by default.\n\n- *preset* - optional - list of objects containing the presets used with pre-defined ranges. See the pre-defined ranges section for default values, object structure and changing the preset values of a preset.\n\nSee below for more information regarding patterns and other features:\n\n### Pattern format\n\n#### Specific ranges\n\nUse a hyphen to define a range of different values of your choosing, or use text outside to denote fixed text. For example:\n\n*[1-9]*\n\nThis would return values such as '4' or something similar. The range *[1-9]* will generate a value equal to or between 1 and 9.\n\nThis range can be used to match any types of value, including letter, numbers and symbols. \n\nProviding the '-' symbol has been used between two valid characters, any character that is between the specified characters (including the specified) will be returned.\n\n#### Pre-defined ranges\n\nThe following will pick a character from a predefined set of characters:\n\n- \\w - word characters</li>\n- \\p - punctuation characters</li>\n- \\d - digits</li>\n- \\c - lower case characters</li>\n- \\u - upper case characters</li>\n- \\l - letters</li>\n- \\h - hex digits</li>\n- \\H - hex digits (lower and upper case)</li>\n- \\p - octal digits</li>\n- \\s - white space\n\nFor example:\n\n*[\\w]*\n\nThis will return any letter (upper and lower case), digit character, or underscore. You can use multiple pre-defined ranges at once, to increase the probability of a character being returned.\n\nThe predefined set of characters for each of the presets above can be modified via the *preset* list of objects. For example:\n\n~~~~\n    {preset_code:\"c\", value:\"abcdefghijklmnopqrstuvwxyz\"}\n~~~~\n\nTo modify one of the presets (in this example, we are modifying *\\c*):\n\n~~~~\n    stringGenerator.preset[3].value = \"abcd\";\n~~~~\n\nThe indexes and corresponding *preset_code* values are as follows:\n\n| preset_code | List index |\n|-------------|------------|\n| w           | 0          |\n| p           | 1          |\n| d           | 2          |\n| c           | 3          |\n| u           | 4          |\n| l           | 5          |\n| h           | 6          |\n| H           | 7          |\n| p           | 8          |\n| s           | 9          |\n\n#### Fixed text\n\nFixed text can be used outside of the character class definition. For example:\n\n*test [1-9] message*\n\nThis would return values such as 'test 4 message' or something similar. The fixed text will remain constant and *[1-9]* will generate a value equal to or between 1 and 9.\n\n#### Fixed text ranges\n\nFixed text can be used within a character class definition, to generate a random value from a specified set of characters. For example:\n\n*[awh]*\n\nThis would return values 'a', 'w' or 'h' for each character of the random string.\n\n#### Quantifiers\n\nUse { and } with a whole number to specify how many characters will be generated for a specific range, for example:\n\n*[1-9]{3}[a-z]{10}*\n\nThis would generate 3 values between 1 and 9, and 10 characters between a and z.\n\nYou can also use a range of quantifiers, for example:\n\n*[a-z]{4:8} or [a-z]{4-8} or [a-z]{4,8}*\n\nThis will generate a string containing characters a to z with a length of between 4 and 8 characters (inclusive). A colon, dash or comma can be used as shown above.\n\n##### Symbol quantifiers\n\nThe typical symbol regular expression quantifiers (?, \\* and +) can be used to generate strings. For example:\n\n*a+* will generate a string made up of between 1 and 10 'a' characters.\n\n*abc\\** can generate strings such as *abccc* or *ab*, etc.\n\n*[abc]\\** can generate *babcbcccbb* or *ccba*, etc.\n\nThe other symbol quantifiers act in the same way as their regular expression counterparts.\n\nBy default, the max number of characters that can be generated is 10, when using \\* and +. This can be changed by assigning the desired value to *symbol_quantifier_max*.\n\n#### Sequences\n\nSequences, denoted by ( and ) allow the specification of whole word values to be used in the generator.\n\nThe operators for sequences are different:\n\n- The | operator - this will pick one value in a list of values.\n  For example: *(value1|value2|value3)* can result in either *value1*, *value2* or *value3*.\n\n- The & operator - this will merge and shuffle multiple values.\n  For example: *(value1&value2&value3)* can result in values such as *3llevveuaa2v1luuae* etc.\n\nSequences do not use quantifiers to generate values.\n\nYou can also use character ranges and quantifiers in sequences, for example:\n\n*([a-zA-Z]+&[0-9]+|[A-Z]|[0-9]{4})* - this can result in either *6OIsv0x66434Lf0OJ33*, *Q* or *2215*.",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arh23/strgen-js.git"
+  },
+  "version": "0.1.0"
+}
