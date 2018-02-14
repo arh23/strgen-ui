@@ -2,6 +2,8 @@
 
 Generate random strings using a pattern system based on regular expressions.
 
+You can view the UI [here](https://arh23.github.io/strgen-ui/strgen.html).
+
 This is the UI project, see [strgen-js](https://github.com/arh23/strgen-js) for the JS project.
 
 ## Setup
