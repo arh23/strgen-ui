@@ -54,10 +54,6 @@
     font-size: 13px;
 }
 
-.history .history_list {
-    max-height: 40%;
-}
-
 .config .config-container .sub-container, .lists .list-container .sub-container {
     text-align: center;
     grid-template-rows: auto;

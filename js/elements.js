@@ -258,11 +258,11 @@ $(document).ready(function(){
         var window_width = $(window.top).width();
 
         if(window_width < 1026 | window_height < 651) {
-            var new_height = Math.floor((window_height - 353) - (window_height / 50)) + "px";
-            var list_new_height = Math.floor((window_height - 353) - (window_height / 50)) + 45 + "px";
+            var new_height = Math.floor((window_height - 353) - (window_height / 60)) + "px";
+            var list_new_height = Math.floor((window_height - 353) - (window_height / 60)) + 45 + "px";
         } else {
-            var new_height = Math.floor((window_height - 353) - (window_height / 7)) + "px";
-            var list_new_height = Math.floor((window_height - 353) - (window_height / 7)) + 45 + "px";
+            var new_height = Math.floor((window_height - 353) - (window_height / 14)) + "px";
+            var list_new_height = Math.floor((window_height - 353) - (window_height / 14)) + 45 + "px";
         }
 
         $("div.content-container").css({maxHeight:new_height});
