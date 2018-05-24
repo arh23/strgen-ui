@@ -24,7 +24,8 @@ $.fn.extend({
 
 $(document).ready(function(){
     var state = "";
-
+    
+    generator.printVersion();
     resizeContent();
     createPresetOptions();
 
