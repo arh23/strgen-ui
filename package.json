@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "devDependencies": {
   	"strgen" : "git+https://github.com/arh23/strgen-js.git",
-  	"jquery" : "3.3.1"
+  	"jquery" : "3.4.1"
   }
 }
